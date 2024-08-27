@@ -6,4 +6,4 @@
 node exercise01.js
 ```
 
-Substitua o **01** por uma das outras 14 opções disponíveis. Total: 01 a 15.  
+Substitua o **01** por uma das outras 14 opções disponíveis.
