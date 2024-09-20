@@ -1,0 +1,138 @@
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #f9faf9;
+    --tertiary-color: #ecefec;
+    --black-color: #0d0c22;
+
+    background-color: var(--primary-color);
+    color: var(--black-color);
+    
+    font-family: "Nunito", sans-serif;
+    line-height: 1.5;
+	font-weight: 400;
+
+    font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    margin: 0;
+}
+
+ul[role="list"] {
+    list-style: none;
+    padding-left: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+a:hover, a:focus {
+    text-decoration: underline;
+}
+a:focus {
+    outline: 2px solid orange;
+}
+
+.header { 
+    background-color: var(--secondary-color);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: -50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
+}
+
+.header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.header-title {
+    margin-bottom: 1rem;
+}
+
+.header-ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-ul-list {
+    margin-right: 15px;
+}
+.header-ul-list:last-child {
+    margin-right: 0;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.section {
+    background-color: var(--secondary-color);
+    flex: 0 0 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+}
+
+.section .section-para {
+    margin-bottom: 15px;
+}
+
+.aside {
+    background-color: var(--secondary-color);
+    flex: 0 0 30%;
+    padding: 2rem;
+}
+
+.footer {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+}
+
+@media (max-width: 720px) {
+    .main {
+        flex-direction: column;
+    }
+    
+    .section,
+    .aside {
+        flex: 0 0 100%;
+    }
+}
+
+.text-align {
+    text-align: center;
+}
