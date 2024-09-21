@@ -30,10 +30,6 @@ html:focus-within {
     scroll-behavior: smooth;
 }
 
-html, body {
-    margin: 0;
-}
-
 ul[role="list"] {
     list-style: none;
     padding-left: 0;
