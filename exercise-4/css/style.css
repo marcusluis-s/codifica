@@ -1,0 +1,87 @@
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #f9faf9;
+    --tertiary-color: #ecefec;
+    --black-color: #0d0c22;
+
+    background-color: var(--primary-color);
+    color: var(--black-color);
+
+    font-family: "Nunito", sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    height: 100%;
+}
+
+ul[role="list"] {
+    list-style: none;
+    padding-left: 0;
+}
+
+img, picture {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+a:hover, a:focus {
+    text-decoration: underline;
+}
+a:focus {
+    outline: 2px solid orange;
+}
+
+button {
+    cursor: pointer;
+}
+
+.header {
+    border: 1px solid red;
+}
+
+.swiper {
+    width: 100%; 
+}
+.swiper-wrapper {
+    display: flex;
+}
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-slide img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+}
