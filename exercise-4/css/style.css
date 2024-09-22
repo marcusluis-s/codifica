@@ -28,7 +28,6 @@
 * {
     margin: 0;
     padding: 0;
-    font: inherit;
 }
 
 html:focus-within {
@@ -64,6 +63,10 @@ button {
     cursor: pointer;
 }
 
+button, input, textarea {
+    font: inherit;
+}
+
 .header {
     border: 1px solid red;
 }
@@ -85,3 +88,4 @@ button {
     max-height: 70vh;
     object-fit: cover;
 }
+
