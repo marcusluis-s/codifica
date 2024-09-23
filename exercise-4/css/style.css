@@ -69,10 +69,12 @@ button, input, textarea {
 
 .header {
     border: 1px solid red;
+    margin-bottom: 2rem;
 }
 
 .swiper {
-    width: 100%; 
+    width: 100%;
+    margin-bottom: 2rem;
 }
 .swiper-wrapper {
     display: flex;
@@ -89,3 +91,39 @@ button, input, textarea {
     object-fit: cover;
 }
 
+.section {
+    background-color: var(--secondary-color);
+    margin-bottom: 2rem;
+    padding: 2rem;
+    /*border: 1px solid red;*/
+    border-radius: 8px;
+    text-align: center;
+}
+.section h2 {
+    margin-bottom: 1rem;
+}
+
+.testimonials-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.testimonial-card {
+    background: var(--tertiary-color);
+    border-radius: 8px;
+    border: 3px solid var(--black-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 1rem;
+    max-width: 300px;
+    /*text-align: center;*/
+}
+
+.testimonial-card h3 {
+    font-size: 1.5em;
+}
+
+.testimonial-card p {
+    font-size: 1em;
+}
