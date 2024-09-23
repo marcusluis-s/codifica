@@ -103,13 +103,12 @@ button, input, textarea {
     margin-bottom: 1rem;
 }
 
-.testimonials-container {
+.services-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-
-.testimonial-card {
+.service-card {
     background: var(--tertiary-color);
     border-radius: 8px;
     border: 3px solid var(--black-color);
@@ -119,11 +118,27 @@ button, input, textarea {
     max-width: 300px;
     /*text-align: center;*/
 }
-
-.testimonial-card h3 {
+.service-card h3 {
     font-size: 1.5em;
 }
-
-.testimonial-card p {
+.service-card p {
     font-size: 1em;
+}
+
+.testimonials-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.testimonial-card {
+    max-width: 300px;
+    background-color: var(--tertiary-color);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.testimonial-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
