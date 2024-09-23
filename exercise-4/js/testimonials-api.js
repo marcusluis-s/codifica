@@ -25,7 +25,7 @@ async function fetchUserData() {
         const testimonialsContainer = document.querySelector(".testimonials-container");
 
         userData.forEach(element => {
-            console.log(element);
+            //console.log(element);
             const card = document.createElement("div");
             card.classList.add("testimonial-card");
 
@@ -38,7 +38,7 @@ async function fetchUserData() {
             testimonialsContainer.appendChild(card);
         });
 
-        console.log(userData);
+        //console.log(userData);
 
     } catch (error) {
         console.error('Erro ao buscar dados:', error);

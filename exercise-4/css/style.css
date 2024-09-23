@@ -3,6 +3,7 @@
     --secondary-color: #f9faf9;
     --tertiary-color: #ecefec;
     --black-color: #0d0c22;
+    --green-color: #24f355;
 
     background-color: var(--primary-color);
     color: var(--black-color);
@@ -68,8 +69,21 @@ button, input, textarea {
 }
 
 .header {
-    border: 1px solid red;
     margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header .header-ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header .header-ul li {
+    margin-right: 20px;
+}
+.header .header-ul li:last-child {
+    margin-right: 0;
 }
 
 .swiper {
@@ -95,7 +109,6 @@ button, input, textarea {
     background-color: var(--secondary-color);
     margin-bottom: 2rem;
     padding: 2rem;
-    /*border: 1px solid red;*/
     border-radius: 8px;
     text-align: center;
 }
@@ -114,15 +127,11 @@ button, input, textarea {
     border: 3px solid var(--black-color);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin: 10px;
-    padding: 1rem;
+    padding: 2rem 1rem;
     max-width: 300px;
-    /*text-align: center;*/
 }
 .service-card h3 {
     font-size: 1.5em;
-}
-.service-card p {
-    font-size: 1em;
 }
 
 .testimonials-container {
@@ -134,11 +143,71 @@ button, input, textarea {
     max-width: 300px;
     background-color: var(--tertiary-color);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 2rem 1rem;
+    margin: 10px;
 }
-
 .testimonial-card img {
     width: 100px;
     height: 100px;
     object-fit: cover;
+    border-radius: 50%;
+}
+.testimonial-card h3 {
+    margin: 1rem 0;
+}
+
+.form-section {
+    text-align: left;
+}
+.form-section h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+.form-section .form {
+    background-color: var(--tertiary-color);
+    max-width: 480px;
+    margin: 10px auto;
+    border: 3px solid var(--black-color);
+    border-radius: 8px;
+    padding: 2rem;
+}
+.form-section .form input {
+    width: 100%;
+    margin-bottom: 18px;
+    font-size: 1.2em;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    border: none;
+}
+.form-section .form textarea {
+    width: 100%;
+    resize: none;
+    border-radius: 4px;
+    border: none;
+    font-size: 1.2em;
+    padding: 0.6rem 1.2rem;
+    margin-bottom: 18px;
+}
+
+.form-section .form button {
+    background-color: var(--black-color);
+    color: var(--primary-color);
+    padding: 0.6rem 0;
+    font-size: 1.2em;
+    border-radius: 4px;
+    border: none;
+    width: 100%;
+    transition: background-color 0.3s ease-out;
+    border: 2px solid var(--black-color);
+}
+.form-section .form button:hover {
+    background-color: var(--green-color);
+    border: 2px solid var(--black-color);
+    color: var(--black-color);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
 }

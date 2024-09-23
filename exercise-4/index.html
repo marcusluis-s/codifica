@@ -10,6 +10,8 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
         />
+
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     </head>
 
     <body>
@@ -80,9 +82,92 @@
             <header>
                 <h2>Testemunhos</h2>
             </header>
-            <div class="testimonials-container"></div>
+            <div data-aos="fade-down" class="testimonials-container"></div>
         </section>
 
+        <section class="contact section form-section" id="contact">
+            <header>
+                <h2>Contato</h2>
+            </header>
+
+            <form class="form" id="form">
+                <div>
+                    <label for="name">Nome:</label><br>
+                    <input 
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Digite o seu nome"
+                        required
+                        aria-required="true"
+                    >
+                </div>
+
+                <div>
+                    <label for="email">Email:</label><br>
+                    <input 
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Digite o seu email"
+                        required
+                        aria-required="true"
+                    >
+                </div>
+
+                <div>
+                    <label for="phone">Telefone:</label><br>
+                    <input 
+                        type="tel"
+                        name="phone"
+                        id="phone"
+                        placeholder="Ex: xxxxxxxxxxx"
+                        required
+                        aria-required="true"
+                    >
+                </div>
+
+                <div>                    
+                    <label for="message">Mensagem:</label><br>
+                    <textarea 
+                        name="message"
+                        id="message"
+                        rows="4"
+                        required
+                        aria-required="true"
+                    ></textarea>
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2024 Yo. Todos os direitos reservados.</p>
+
+            <nav aria-label="Social Media">
+                <header>
+                    <h3>Redes Sociais</h3>
+                </header>
+                <ul role="list">
+                    <li role="listitem"><a href="#">X</a></li>
+                    <li role="listitem"><a href="#">YouTube</a></li>
+                    <li role="listitem"><a href="#">Instagram</a></li>
+                </ul>
+            </nav>
+
+            <nav aria-label="Legal Documents">
+                <header>
+                    <h3>Informações Legais</h3>
+                </header>
+                <ul class="legal-links" role="list">
+                    <li role="listitem"><a href="#">Termos de Uso</a></li>
+                    <li role="listitem"><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </nav>
+        </footer>
+        
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script src="js/services-api.js"></script>
         <script src="js/testimonials-api.js"></script>
         <script src="js/script.js" type="module"></script>
