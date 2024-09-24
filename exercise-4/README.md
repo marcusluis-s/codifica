@@ -2,6 +2,10 @@
 
 ## Como usar
 
+1. Clone o repositório com o comando `git clone <LINK_DO_REPOSITÓRIO`
+2. Após clona, abra o seu terminal e navegue até a pasta do projeto.
+3. Agora, instale as dependências: `npm install`
+
 Se você estiver usando o Visual Studio Code (VSCode), é possível visualizar
 este projeto facilmente usando a extensão **Live Server**. Siga os passos
 abaixo:  
