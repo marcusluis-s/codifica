@@ -12,6 +12,17 @@
         />
 
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+        </script>
+        <script src="config.js"></script>
+        <script type="text/javascript">
+            (function(){
+                emailjs.init(config.publicKey);
+            })();
+        </script>
+
     </head>
 
     <body>
@@ -33,7 +44,7 @@
                     </li>
                 </ul> 
             </nav>
-            <a href="#subscribe" class="link">Assine Agora</a>
+            <a href="#subscribe" class="link subscribe">Assine Agora</a>
         </header>
 
         <section aria-label="Image Carousel">
@@ -90,7 +101,7 @@
                 <h2>Contato</h2>
             </header>
 
-            <form class="form" id="form">
+            <form class="form" id="form" method="POST">
                 <div>
                     <label for="name">Nome:</label><br>
                     <input 
@@ -138,7 +149,7 @@
                     ></textarea>
                 </div>
 
-                <button type="submit">Enviar</button>
+                <button type="submit" onclick="sendEmail()">Enviar</button>
             </form>
         </section>
 
@@ -150,9 +161,9 @@
                     <h3>Redes Sociais</h3>
                 </header>
                 <ul role="list">
-                    <li role="listitem"><a href="#">X</a></li>
-                    <li role="listitem"><a href="#">YouTube</a></li>
-                    <li role="listitem"><a href="#">Instagram</a></li>
+                    <li role="listitem"><a href="javascript:void(0)">X</a></li>
+                    <li role="listitem"><a href="javascript:void(0)">YouTube</a></li>
+                    <li role="listitem"><a href="javascript:void(0)">Instagram</a></li>
                 </ul>
             </nav>
 
@@ -161,8 +172,8 @@
                     <h3>Informações Legais</h3>
                 </header>
                 <ul class="legal-links" role="list">
-                    <li role="listitem"><a href="#">Termos de Uso</a></li>
-                    <li role="listitem"><a href="#">Política de Privacidade</a></li>
+                    <li role="listitem"><a href="javascript:void(0)">Termos de Uso</a></li>
+                    <li role="listitem"><a href="javascript:void(0)">Política de Privacidade</a></li>
                 </ul>
             </nav>
         </footer>
@@ -170,6 +181,7 @@
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script src="js/services-api.js"></script>
         <script src="js/testimonials-api.js"></script>
+        <script src="js/emailjs.js"></script>
         <script src="js/script.js" type="module"></script>
     </body>
 </html>

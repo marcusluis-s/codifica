@@ -69,12 +69,8 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!valid) {
             alert(errorMessages.join("\n")) 
         } else {
-            //form.submit(); 
-            console.log("enviando dados:", name, email, phone, message);
-
-            form.reset();
-
-            alert("Formulário enviado com sucesso!");
+            sendEmail(); 
         }
     });
 });
+

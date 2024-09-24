@@ -17,3 +17,6 @@ build/
 .idea/
 
 .DS_Store
+
+# Ignorar o arquivo de configuração com a chave API
+config.js
