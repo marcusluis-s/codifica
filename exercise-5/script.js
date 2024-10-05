@@ -19,10 +19,19 @@ function createTodoListItems(task) {
     const span = document.createElement("span");
     span.textContent = task;
 
+    const editButton = document.createElement("button");
+    editButton.textContent = "Editar";
+    editButton.addEventListener("click", editTask);
+
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "Deletar";
+    removeButton.addEventListener("click", removeTask);
+
     listItem.appendChild(span);
+    listItem.appendChild(editButton);
+    listItem.appendChild(removeButton);
     return listItem;
 }
-
 
 function loadTasks() {
     let tasks = getTasksFromLocalStorage();
@@ -33,6 +42,68 @@ function loadTasks() {
     });
 }
 
+function editTask(event) {
+    const listItem = event.target.parentElement; // Acessa o elemento <li>
+    const span = listItem.querySelector("span"); // Acessa o <span> que contém o texto da tarefa
+    const currentTaskText = span.textContent; // Obtém o texto atual da tarefa
+
+    // Cria um campo de entrada para edição
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = currentTaskText; // Define o valor do campo de entrada como o texto atual
+
+    // Substitui o <span> pelo campo de entrada
+    listItem.replaceChild(input, span);
+
+    // Altera o texto do botão de "Editar" para "Salvar"
+    event.target.textContent = "Salvar";
+    event.target.removeEventListener("click", editTask); // Remove o listener de edição
+
+    // Adiciona um novo listener para salvar a tarefa
+    event.target.addEventListener("click", function saveTask() {
+        const newTaskText = input.value.trim(); // Obtém o novo texto da tarefa
+
+        if (newTaskText !== "") {
+            // Cria um novo <span> com o texto editado
+            const newSpan = document.createElement("span");
+            newSpan.textContent = newTaskText;
+
+            // Substitui o campo de entrada pelo novo <span>
+            listItem.replaceChild(newSpan, input);
+
+            // Atualiza o botão de "Salvar" de volta para "Editar"
+            event.target.textContent = "Editar";
+            event.target.removeEventListener("click", saveTask); // Remove o listener de salvar
+
+            // Adiciona o listener de edição novamente
+            event.target.addEventListener("click", editTask);
+
+            // Atualiza o armazenamento local
+            let tasks = getTasksFromLocalStorage();
+            tasks = tasks.map(task => task === currentTaskText ? newTaskText : task); // Atualiza a tarefa editada
+            localStorage.setItem("tasks", JSON.stringify(tasks)); // Salva a lista atualizada
+        }
+    });
+}
+
+function removeTask(event) {
+    // 1. Remover o item <li> da lista de tarefas
+    const listItem = event.target.parentElement;
+    const taskBeingRemoved = listItem.querySelector("span").textContent;
+    todoList.removeChild(listItem);
+
+    // 2. Atualizar o armazenamento local para refletir essa remocao
+    // o método `filter()` cria uma nova lista de tarefas que nao inclui
+    // a tarefa removida.
+    // `tasks` representa cada elemento do array
+    // `item` é a variável que representa cada tarefa individual na lista
+    let tasks = getTasksFromLocalStorage();
+    tasks = tasks.filter((item) => {
+        return item !== taskBeingRemoved;
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
 buttonAddTask.addEventListener("click", function(event) {
     event.preventDefault();
 
@@ -40,17 +111,9 @@ buttonAddTask.addEventListener("click", function(event) {
 });
 
 function saveTasksToLocalStorage(newTask) {
-    const tasks = getTasksFromLocalStorage(); // Pegando as tarefas existentes
-    tasks.push(newTask); // Adicionando a nova tarefa ao array
+    const tasks = getTasksFromLocalStorage();
+    tasks.push(newTask);
     
-    // TIL
-    // Se eu deixar apenas essa linha de código, ela irá sobrescrever o array
-    // de tarefas a cada nova tarefa adicionada, em vez de adicionar a tarefa
-    // ao array existente. Por isso é necessário, primeiro, obter as terfas
-    // existenes e depois adicionar a nova tarefa ao array.
-    //
-    // Com as duas linhas de código acima, essa linha de código irá
-    // salvar o array atualizado.
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
