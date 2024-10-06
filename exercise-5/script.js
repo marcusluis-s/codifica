@@ -1,6 +1,16 @@
 const buttonAddTask = document.getElementById("button-add-task"); 
 const todoList = document.getElementById("todo-list");
 
+todoList.addEventListener("click", function(event) {
+    const listItem = event.target.closest("li");
+    if (listItem) {
+        const taskItemSpan = listItem.querySelector("span");
+        taskItemSpan.classList.toggle("checked");
+    }
+
+    return false;
+});
+
 function addTasks() {
     const inputField = document.getElementById("input-field-new-task");
     const inputFieldNewTask = inputField.value;
@@ -16,20 +26,28 @@ function addTasks() {
 
 function createTodoListItems(task) {
     const listItem = document.createElement("li");
+    listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", "mb-2");
+
     const span = document.createElement("span");
     span.textContent = task;
 
+    const buttonGroup = document.createElement("div");
+    buttonGroup.classList.add("btn-group", "gap-2");
+
     const editButton = document.createElement("button");
     editButton.textContent = "Editar";
+    editButton.classList.add("btn", "btn-warning", "btn-sm");
     editButton.addEventListener("click", editTask);
 
     const removeButton = document.createElement("button");
     removeButton.textContent = "Deletar";
+    removeButton.classList.add("btn", "btn-danger", "btn-sm");
     removeButton.addEventListener("click", removeTask);
 
     listItem.appendChild(span);
-    listItem.appendChild(editButton);
-    listItem.appendChild(removeButton);
+    buttonGroup.appendChild(editButton);
+    buttonGroup.appendChild(removeButton);
+    listItem.appendChild(buttonGroup);
     return listItem;
 }
 
@@ -43,7 +61,7 @@ function loadTasks() {
 }
 
 function editTask(event) {
-    const listItem = event.target.parentElement; // Acessa o elemento <li>
+    const listItem = event.target.closest("li"); // Acessa o elemento <li>
     const span = listItem.querySelector("span"); // Acessa o <span> que contém o texto da tarefa
     const currentTaskText = span.textContent; // Obtém o texto atual da tarefa
 
@@ -88,7 +106,7 @@ function editTask(event) {
 
 function removeTask(event) {
     // 1. Remover o item <li> da lista de tarefas
-    const listItem = event.target.parentElement;
+    const listItem = event.target.closest("li");
     const taskBeingRemoved = listItem.querySelector("span").textContent;
     todoList.removeChild(listItem);
 

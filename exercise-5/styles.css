@@ -42,3 +42,27 @@ ul[role="list"] {
     padding-left: 0;
 }
 
+ul li {
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+ul li span.checked {
+    background-color: #77d27e;
+    color: #2a8532;
+    text-decoration: line-through;
+}
+
+ul li span.checked:before {
+    content: "";
+    position: absolute;
+    border-width: 0 2px 2px 0;
+    border-color: #000;
+    border-style: solid;
+    width: 5px;
+    height: 15px;
+    top: 15px;
+    left: -15px;
+    transform: rotate(45deg);
+}

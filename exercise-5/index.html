@@ -14,21 +14,21 @@
     </head>
 
     <body> 
-        <div class="container">
+        <div class="container w-75 mt-5">
             <header>
-                <h1>To-Do List</h1>
+                <h1 class="text-center mb-4">To-Do List</h1>
             </header>
-            <form>
+            <form id="todo-form" class="mb-4">
                 <div class="mb-3">
                     <label for="" class="form-label">Tarefa:</label>
                     <input type="text" class="form-control" id="input-field-new-task" placeholder="Tarefa">
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-3" id="button-add-task">Adicionar tarefa</button>
+                    <button type="submit" class="btn btn-primary" id="button-add-task">Adicionar tarefa</button>
                 </div>
             </form>
 
-            <ul role="list" id="todo-list"></ul>
+            <ul role="list" id="todo-list" class="list-group"></ul>
         </div>
 
         <script src="script.js"></script>
