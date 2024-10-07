@@ -5,7 +5,9 @@ todoList.addEventListener("click", function(event) {
     const listItem = event.target.closest("li");
     if (listItem) {
         const taskItemSpan = listItem.querySelector("span");
-        taskItemSpan.classList.toggle("checked");
+        if (taskItemSpan) {
+            taskItemSpan.classList.toggle("checked");
+        }
     }
 
     return false;
@@ -61,25 +63,39 @@ function loadTasks() {
 }
 
 function editTask(event) {
-    const listItem = event.target.closest("li"); // Acessa o elemento <li>
-    const span = listItem.querySelector("span"); // Acessa o <span> que contém o texto da tarefa
-    const currentTaskText = span.textContent; // Obtém o texto atual da tarefa
+    // Acessa o elemento <li>
+    const listItem = event.target.closest("li");
+    if (!listItem) {
+        console.error("Item da lista não encontrado.");
+        return;
+    }
+    
+    // Acessa o <span> que contém o texto da tarefa
+    const span = listItem.querySelector("span");
+    if (!span) {
+        console.error("Span não encontrado no item da lista.");
+    }
+
+    const currentTaskText = span.textContent;
 
     // Cria um campo de entrada para edição
     const input = document.createElement("input");
     input.type = "text";
-    input.value = currentTaskText; // Define o valor do campo de entrada como o texto atual
+    input.value = currentTaskText;
 
     // Substitui o <span> pelo campo de entrada
     listItem.replaceChild(input, span);
 
     // Altera o texto do botão de "Editar" para "Salvar"
     event.target.textContent = "Salvar";
-    event.target.removeEventListener("click", editTask); // Remove o listener de edição
+    event.target.removeEventListener("click", editTask);
 
     // Adiciona um novo listener para salvar a tarefa
-    event.target.addEventListener("click", function saveTask() {
-        const newTaskText = input.value.trim(); // Obtém o novo texto da tarefa
+    event.target.addEventListener("click", function saveTask(e) {
+        // Evita que o evento de clique do botão "Salvar" se propague para o <li>
+        // Isso evita que a tarefa seja marcada como verificada.
+        e.stopPropagation();
+        const newTaskText = input.value.trim();
 
         if (newTaskText !== "") {
             // Cria um novo <span> com o texto editado
@@ -91,15 +107,17 @@ function editTask(event) {
 
             // Atualiza o botão de "Salvar" de volta para "Editar"
             event.target.textContent = "Editar";
-            event.target.removeEventListener("click", saveTask); // Remove o listener de salvar
+            event.target.removeEventListener("click", saveTask);
 
             // Adiciona o listener de edição novamente
             event.target.addEventListener("click", editTask);
 
             // Atualiza o armazenamento local
             let tasks = getTasksFromLocalStorage();
-            tasks = tasks.map(task => task === currentTaskText ? newTaskText : task); // Atualiza a tarefa editada
-            localStorage.setItem("tasks", JSON.stringify(tasks)); // Salva a lista atualizada
+            // Atualiza a tarefa editada
+            tasks = tasks.map(task => task === currentTaskText ? newTaskText : task);
+            // Salva a lista atualizada
+            localStorage.setItem("tasks", JSON.stringify(tasks));
         }
     });
 }
