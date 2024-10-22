@@ -1,7 +1,7 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 :root {
@@ -9,16 +9,26 @@
 }
 
 body {
-    position: relative;
     background-color: #000000;
     font-family: "Roboto", sans-serif;
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
+    height: 100%;
 }
 
 button {
     cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
 }
 
 header {
@@ -29,7 +39,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 100px;
+    height: 92px;
+    padding: 1.2rem 6.25rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     z-index: 20;
 }
@@ -57,12 +68,10 @@ header {
 }
 
 .nav li a {
-    color: #fff;
-    text-decoration: none;
+    color: #fff; 
     text-transform: uppercase;
     font-weight: 300;
     letter-spacing: 1px;
-    cursor: pointer;
     padding: 10px;
 }
 
@@ -108,8 +117,6 @@ header {
 }
 
 .swiper .swiper-wrapper {
-    margin: 0;
-    padding: 0;
     width: 100%;
     height: 100%;
 }
@@ -117,23 +124,25 @@ header {
 .swiper .swiper-wrapper .swiper-slide {
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 .swiper .swiper-wrapper .swiper-slide::before {
     position: absolute;
     content: "";
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(0, 0, 0, 0.6);
 }
 
-.swiper .swiper-wrapper .swiper-slide img {
-    display: block;
+.swiper .swiper-wrapper .swiper-slide .swiper-img-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    min-height: 100%;
     object-fit: cover;
+    z-index: -1;
     object-position: center;
 }
 
@@ -145,15 +154,23 @@ header {
     min-height: 100vh;
     overflow: hidden;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    padding-top: 92px; 
+    border: 1px solid red;
 }
 
-.swiper .swiper-wrapper .swiper-slide .banner img {
-    position: absolute;
-    max-width: 700px;
-    transform: translateX(-50%);
+.swiper .swiper-wrapper .swiper-slide .banner .box {
+    flex: 1 1 calc(50% - 10px);
+    padding: 2rem 6.25rem;
     z-index: 1;
+}
+
+.swiper .swiper-wrapper .swiper-slide .banner .banner-img {
+    position: absolute;
+    max-width: 760px;
+    width: 760px;
+    height: 760px;
+    object-fit: cover;
+    transform: translateX(-50%);
     left: 50%;
 }
 
@@ -190,134 +207,48 @@ header {
     border-radius: 50%;
 }
 
-.right {
-    max-height: 70vh;
+.box .box-content {
+    border: 1px solid red;
+    overflow: hidden;
 }
 
-.banner img {
-    max-width: 790px;
-    max-height: 790px;
-    width: 50%;
-    height: 50%;
-}
-
-.swiper .swiper-wrapper .swiper-slide .banner .left {
+.box .box-content .rating {
+    border: 1px solid red;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    margin-bottom: 40px;
 }
 
-.banner .left .features {
-    max-width: 400px;
-    margin-bottom: 100px;
-}
-
-.banner .left .features .rating {
-    color: #ffffff;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-.banner .left .features .rating .score {
-    padding: 15px;
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--primary);
-    background: #ffffff;
-}
-
-.banner .left .features .content {
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.banner .left .features .pricing {
-    color: #ffffff;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.banner .left .features .content h4 {
-    color: #ffffff;
-    font-size: 1.5em;
-    font-weight: 400;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.banner .left .features .content span {
-    font-size: 0.7em;
-    text-transform: uppercase;
-    font-weight: 400;
-}
-
-.banner .left .features .content .subtitle {
-    color: var(--primary);
-}
-
-.banner h1 {
-    color: #ffffff;
-    font-size: 5em;
-    letter-spacing: 5px;
-    line-height: 0.9;
-    z-index: 10;
-    text-transform: uppercase;
-}
-
-.swiper .swiper-wrapper .swiper-slide .banner .right {
-    position: relative;
-    height: 100vh;
-    max-width: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-end;
-    z-index: 100;
-}
-
-.banner .right .description {
-    padding: 30px 60px 0 0;
-    color: #ffffff;
-}
-
-.banner .right .description li {
-    list-style: none;
-}
-
-.banner .right .description h4 {
-    display: inline-block;
-    font-size: 1.3em;
-    text-transform: uppercase;
-    font-weight: 400;
-    letter-spacing: 1px;
+.box .box-content .rating .box-content-info-item {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.banner .right .description p {
-    margin: 5px 0 25px 30px;
-    font-weight: 300;
+.box .box-content .rating .box-content-info-item .score {
+    color: red;
+    font-size: 2.2em;
 }
 
-.banner .right h2 {
-    color: #ffffff;
-    font-size: 3.5em;
-    line-height: 1em;
-    font-weight: 400;
-    text-align: right;
-    margin-bottom: 20px;
-    text-transform: uppercase;
+.box .box-content .pricing .box-content-info-item {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.banner .right iframe {
-    max-width: 450px;
-    max-height: 250px;
+.box .box-content .pricing .box-content-info-item .fa-solid {
+    color: #fff;
+    font-size: 2.2em;
+}
+
+.banner .trailer iframe {
+    min-width: 368px;
+    min-height: 240px;
 }
 
 /*LOGIN MODAL*/
@@ -362,6 +293,11 @@ header {
 
 .btn-open-modal {
     padding: 0.6rem 1.2rem;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: #fff;
+    text-transform: uppercase;
 }
 
 .modal .modal-content .btn-close-modal {
