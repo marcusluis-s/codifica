@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 case 'POKEMON':
                     swiper.slideTo(1);
                     break;
+                case "ZELDA":
+                    swiper.slideTo(2)
+                    break;
                 default:
                     alert('Jogo não foi encontrado');
                     break;
