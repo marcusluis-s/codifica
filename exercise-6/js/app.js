@@ -65,4 +65,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Envelope Modal
+    const sendMessageModal = document.getElementById("send-message-modal");
+    const iconEnvelopeOpenModal = document.querySelectorAll(".envelope-open-modal");
+    const btnCloseModalEnvelope = document.getElementById("btn-close-modal-envelope"); 
+    
+    iconEnvelopeOpenModal.forEach((iconEnvelope) => {
+        iconEnvelope.addEventListener("click", function() {
+            sendMessageModal.classList.add("showModal");
+        });
+    });
+
+    btnCloseModalEnvelope.addEventListener("click", function() {
+        sendMessageModal.classList.remove("showModal");
+    });
+
+    sendMessageModal.addEventListener("click", function(event) {
+        const modalContentEnvelope = document.getElementById("modal-content-envelope");
+
+        if (!modalContentEnvelope.contains(event.target)) {
+            sendMessageModal.classList.remove("showModal");
+        }
+    });
+
 });

@@ -64,6 +64,35 @@
                         <label>Senha:</label>
                         <input type="password" name="password" placeholder="Digite sua senha">
                     </div>
+                    <div class="form-group">
+                        <button class="button-form">Entrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--Envelope Modal-->
+        <div id="send-message-modal" class="send-message-modal">
+            <div id="modal-content-envelope" class="modal-content-envelope">
+                <button id="btn-close-modal-envelope" class="btn-close-modal">&times;</button>
+                <form class="login-form">
+                    <h3>Envie uma mensagem</h3>
+
+                    <div class="form-group"> 
+                        <label>Email:</label>
+                        <input type="email" name="name" placeholder="Digite seu email">
+                    </div>
+                    <div class="form-group"> 
+                        <label>Nome:</label>
+                        <input type="text" name="name" placeholder="Digite seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label>Mensagem:</label>
+                        <textarea rows="" cols=""></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="button-form">Enviar</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -104,8 +133,8 @@
                                 <img src="./images/mario-title.png" alt="Mario" class="image-title">
 
                                 <div class="icons-options">
-                                    <i class="fa-regular fa-envelope fa-2xl"></i>
-                                </div>
+                                    <i class="fa-regular fa-envelope fa-2xl envelope-open-modal"></i>
+                                </div> 
                             </div>
                         </section>
 
@@ -168,7 +197,11 @@
                                     </div>
                                 </div>
 
-                                <img src="./images/pokemon-title.png" alt="Pokemon"> 
+                                <img src="./images/pokemon-title.png" alt="Pokemon">
+
+                                <div class="icons-options">
+                                    <i class="fa-regular fa-envelope fa-2xl envelope-open-modal"></i>
+                                </div>
                             </div>
                         </div>
 
@@ -237,10 +270,14 @@
 
                                 <!--<h2>Mario</h2>-->
                                 <img src="./images/zelda-title.png" alt="Zelda">
+
+                                <div class="icons-options">
+                                    <i class="fa-regular fa-envelope fa-2xl envelope-open-modal"></i>
+                                </div>
                             </div>
                         </section>
 
-                        <img src="images/mario.png" alt="Mario" class="banner-img">
+                        <img src="images/link.png" alt="Mario" class="banner-img">
 
                         <section class="right box">
                             <div class="box-content">
