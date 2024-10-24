@@ -214,14 +214,14 @@ header {
     width: 60px;
     height: 60px;
     top: 50%;
-    left: 60%;
+    left: 10px;
     z-index: 100;
     background-color: red;
 }
 
 .swiper .swiper-button-next {
     position: absolute;
-    right: 70%;
+    right: 10px;
     top: 50%;
     width: 60px;
     height: 60px;
