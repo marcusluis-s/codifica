@@ -1,4 +1,4 @@
-# +praTi e Codifica - Exercício 5 - To-Do List
+# +praTi e Codifica - Exercício 6 - Correnções em Landing Page
 
 ## Como usar
 
