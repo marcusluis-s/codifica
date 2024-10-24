@@ -538,6 +538,32 @@ header {
     z-index: 1000;
 }
 
+.send-message-modal .gifs-container {
+    display: flex;
+}
+
+@media screen and (max-width: 798px) {
+    .send-message-modal .gifs-container {
+        display: none;
+    }
+}
+
+.send-message-modal .gifs-container .gif-pokemon {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.send-message-modal .gifs-container .gif-charizard {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.send-message-modal .gifs-container .gif-mario {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 .send-message-modal.showModal {
     visibility: visible;
     opacity: 1;
