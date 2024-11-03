@@ -11,8 +11,10 @@ function ToDoList() {
             setErrorMessage("Por favor, adicione uma tarefa.");
             return;
         }
-
-        setTasks([...tasks, task]);
+        
+        // TIL que é possível criar objetos para um estado em React.
+        // Objetos adicionados para o estado `task`: title e completed
+        setTasks([...tasks, { title: task, completed: false }]);
         setTask("");
         setErrorMessage("");
     }
@@ -25,6 +27,14 @@ function ToDoList() {
         setTasks(filteredTasks);
     }
 
+    const handleCheckedTask = (index) => {
+        const updatedTasks = tasks.map((t, i) => {
+            return i === index ? { ...t, completed: !t.completed } : t;
+        });
+
+        setTasks(updatedTasks);
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -32,37 +42,43 @@ function ToDoList() {
     }
 
     return (
-        <div>
+        <div className={styles["container-to-do-list"]}>
             <h2>3 - Lista de Tarefas</h2>
             <form onSubmit={handleSubmit} className={styles["form"]}>
-                <div className={styles["form-group"]}>
-                    <label htmlFor="to-do">Tarefa</label>
-                    <input
-                        type="text"
-                        value={task}
-                        placeholder="Digite uma tarefa"
-                        onChange={(event) => setTask(event.target.value)}
-                    />
-                    {errorMessage &&
-                        <p className={styles["error-message"]}>{errorMessage}</p>
-                    }
-                </div>
+                <label htmlFor="to-do">Tarefa</label>
+                <input
+                    type="text"
+                    value={task}
+                    placeholder="Digite uma tarefa"
+                    onChange={(event) => setTask(event.target.value)}
+                />
+                {errorMessage &&
+                    <small className={styles["error-message"]}>{errorMessage}</small>
+                }
 
-                <div>
-                    <button type="submit">Adicionar tarefa</button>
-                </div>
+                <button type="submit">Adicionar tarefa</button>
             </form>
 
             <main className={styles["to-do-list"]}>
-                <ul>
-                    {tasks.map((t, i) => (
+                {tasks.map((t, i) => (
+                    <ul key={i} className="">
                         <div>
-                            <li key={i}>{t}</li>
-                            <button onClick={() => handleRemoveTask(i)}>Remover tarefa</button>
+                            <input
+                                type="checkbox"
+                                checked={t.completed}
+                                onChange={() => handleCheckedTask(i)}
+                            />
+                            <li style={{ 
+                                    textDecoration: t.completed ? "line-through" : "none",
+                                    color: t.completed ? "gray" : "black" 
+                            }}>
+                                {t.title}
+                            </li>
                         </div>
-                    ))}
-                </ul> 
-            </main>
+                        <button onClick={() => handleRemoveTask(i)}>Remover tarefa</button>
+                    </ul>
+                ))}
+            </main> 
         </div>
     )
 }
