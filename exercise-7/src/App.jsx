@@ -1,6 +1,7 @@
 import './App.css'
 import ChangingBackgroundColor from './components/ChangingBackgroundColor/ChangingBackgroundColor'
 import Counter from './components/Counter/Counter'
+import SearchFilter from './components/SearchFilter/SearchFilter'
 import Stopwatch from './components/Stopwatch/Stopwatch'
 import ToDoList from './components/ToDoList/ToDoList'
 
@@ -12,6 +13,7 @@ function App() {
             <ChangingBackgroundColor />
             <ToDoList />
             <Stopwatch />
+            <SearchFilter />
         </>
     )
 }
