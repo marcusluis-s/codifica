@@ -34,3 +34,8 @@ button {
     cursor: pointer;
     padding: 0.6rem 1.2rem;
 }
+
+img, video, svg {
+    max-width: 100%;
+    height: auto;
+}

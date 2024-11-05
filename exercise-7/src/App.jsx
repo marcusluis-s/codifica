@@ -2,6 +2,7 @@ import './App.css'
 import ChangingBackgroundColor from './components/ChangingBackgroundColor/ChangingBackgroundColor'
 import Counter from './components/Counter/Counter'
 import DataRequest from './components/DataRequest/DataRequest'
+import ImageGallery from './components/ImageGallery/ImageGallery'
 import RegistrationForm from './components/RegistratioForm/RegistrationForm'
 import SearchFilter from './components/SearchFilter/SearchFilter'
 import Stopwatch from './components/Stopwatch/Stopwatch'
@@ -18,6 +19,7 @@ function App() {
             <SearchFilter />
             <RegistrationForm />
             <DataRequest />
+            <ImageGallery />
         </>
     )
 }
