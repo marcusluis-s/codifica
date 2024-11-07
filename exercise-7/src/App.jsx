@@ -6,6 +6,8 @@ import ImageGallery from './components/ImageGallery/ImageGallery'
 import RegistrationForm from './components/RegistratioForm/RegistrationForm'
 import SearchFilter from './components/SearchFilter/SearchFilter'
 import Stopwatch from './components/Stopwatch/Stopwatch'
+import TabNavigation from './components/TabNavigation/TabNavigation'
+import TheFinalCountDown from './components/TheFinalCountdown/TheFinalCountDown'
 import ToDoList from './components/ToDoList/ToDoList'
 
 function App() {
@@ -20,8 +22,10 @@ function App() {
             <RegistrationForm />
             <DataRequest />
             <ImageGallery />
+            <TheFinalCountDown />
+            <TabNavigation />
         </>
-    )
+   )
 }
 
 export default App
