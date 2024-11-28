@@ -1,0 +1,79 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    font-weight: 400;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    --primary-color-dark-mode: #1c1c1c;
+    --secondary-color-dark-mode: #4a4a4a;
+    --tertiary-color-dark-mode: #7a7a7a;
+    --text-color-dark-mode: #d1d1d1;
+
+    --primary-color-light-mode: #ffffff;
+    --secondary-color-light-mode: #4a4a4a;
+    --tertiary-color-light-mode: #7a7a7a;
+    --text-color-light-mode: #000000;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+hmtl,
+body {
+    height: 100%;
+}
+
+button {
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img,
+picture,
+svg {
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,11 @@
+.header {
+    background-color: #DDE1E3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-user-profile-info {
+    display: flex;
+    align-items: center;
+}
