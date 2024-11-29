@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styles from "./Header.module.css";
 
 function Header({ user, handleSignOut }) {
@@ -11,6 +12,14 @@ function Header({ user, handleSignOut }) {
             <button onClick={handleSignOut}>Sair</button>
         </header>
     )
+}
+
+Header.propTypes = {
+    user: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        picture: PropTypes.string.isRequired,
+    }).isRequired,
+    handleSignOut: PropTypes.func.isRequired,
 }
 
 export default Header;

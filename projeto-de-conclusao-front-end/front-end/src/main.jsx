@@ -8,7 +8,7 @@ import routerConfig from './routes/routerConfig'
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <GoogleOAuthProvider clientId="208854895130-2s9h5jh4veo2c5d7rp92a3mhsgbmkpuu.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
             <RouterProvider router={routerConfig} />
         </GoogleOAuthProvider>
     </StrictMode>,
