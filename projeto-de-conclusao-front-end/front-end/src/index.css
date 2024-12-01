@@ -8,15 +8,19 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    --primary-color-dark-mode: #1c1c1c;
-    --secondary-color-dark-mode: #4a4a4a;
-    --tertiary-color-dark-mode: #7a7a7a;
-    --text-color-dark-mode: #d1d1d1;
+    --primary-color-dark-mode: #010102;
+    --secondary-color-dark-mode: #484E87;
+    --tertiary-color-dark-mode: #676FBE;
+    --bg-color-button-light-mode: #E2E6F9;
+    --text-color-button-light-mode: #4F5678;
+    --text-color-dark-mode: #E0E0E0;
 
-    --primary-color-light-mode: #ffffff;
-    --secondary-color-light-mode: #4a4a4a;
-    --tertiary-color-light-mode: #7a7a7a;
-    --text-color-light-mode: #000000;
+    --primary-color-light-mode: #F0F2FC;
+    --secondary-color-light-mode: #C6CDF3;
+    --tertiary-color-light-mode: #919AE4;
+    --bg-color-button-light-mode: #7881DB;
+    --text-color-button-light-mode: #FFFFFF;
+    --text-color-light-mode: #1E1E1E;
 }
 
 *,
