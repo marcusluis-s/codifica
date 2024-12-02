@@ -1,15 +1,25 @@
-import { serve } from '@hono/node-server'
-import { Hono } from 'hono'
-import userRoutes from './routes/userRoutes.js';
+import express, { Application } from "express";
+import authRoutes from "./routes/auth";
+import sequelize from "./config/dbConfig";
 
-const app = new Hono()
+const app: Application = express();
 
-app.route("/users", userRoutes);
+// Middlewares
+app.use(express.json());
 
-const port = 3000
-console.log(`Server is running on http://localhost:${port}`)
+// Rotas
+app.use("/auth", authRoutes);
 
-serve({
-  fetch: app.fetch,
-  port
-})
+sequelize.authenticate()
+    .then(() => {
+        console.log("Conectado ao MySQL");
+    })
+    .catch((err) => {
+        console.error("Erro ao conectgar ao MySQL.", err);
+    });
+
+// Starting the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta http://localhost:${PORT}`);
+});

@@ -1,23 +1,40 @@
-import type { ResultSetHeader, RowDataPacket } from "mysql2";
-import pool from "../config/db.js"
+import { DataTypes, Model } from "sequelize";
+import sequelize from "../config/dbConfig";
 
-interface User {
-    id: number;
-    name: string;
-    email: string;
-    password: string;
+class User extends Model {
+    public id!: number;
+    public email!: string;
+    public password!: string;
+    public name!: string;
 }
 
-export const createUser = async (name: string, email: string, password: string) => {
-    const [result] = await pool.query<ResultSetHeader>(
-        "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-        [name, email, password]
-    );
+User.init(
+    {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        email: {
+            type: DataTypes.STRING,
+            unique: true,
+            allowNull: false,
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+    },
+    {
+        sequelize,
+        modelName: "User",
+        tableName: "users",
+        timestamps: true
+    }
+);
 
-    return result;
-}
-
-export const findUserByEmail = async (email: string): Promise<User | null> => {
-    const [rows] = await pool.query<User[] & RowDataPacket[]>("SELECT * FROM users WHERE email = ?", [email]);
-    return rows[0];
-}
+export default User;
