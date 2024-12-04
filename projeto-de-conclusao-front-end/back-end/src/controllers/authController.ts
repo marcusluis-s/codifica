@@ -41,6 +41,7 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
     }
 }
 
+// Envia um e-mail com um link para redefinir a senha
 export const forgotPassword = async (req: Request, res: Response): Promise<void> => {
     const { email } = req.body;
 
