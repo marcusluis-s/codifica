@@ -8,6 +8,9 @@ const app: Application = express();
 app.use(express.json());
 
 // Rotas
+app.get("/", (req, res) => {
+    res.status(200).json({ message: "Welcome, /home 🏡" });
+});
 app.use("/auth", authRoutes);
 
 sequelize.authenticate()

@@ -4,6 +4,43 @@ import bcrypt from 'bcrypt';
 import User from '../models/userModel';
 import transporter from '../config/email';
 
+export const registerUser = async (req: Request, res: Response): Promise<void> => {
+    const { name, email, password } = req.body;
+
+    try {
+        // Verifica se o usuário já existe
+        const existingUser = await User.findOne({ where: { email } });
+        if (existingUser) {
+            res.status(400).json({ message: "Já existe um usuário registrado com esse e-mail." });
+            return;
+        }
+
+        // Cripgrafa a senha
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Cria o novo usuário
+        const newUser = await User.create({
+            name,
+            email,
+            password: hashedPassword,
+        });
+
+        // Quando um novo usuário é criado com sucesso no banco de dados,
+        // o Sequelize retorna um objeto contendo as informações não-sensíveis do usuário.
+        // A resposta JSON enviando ao cliente ajuda o frontend a saber que o registro
+        // foi bem-sucedido e fornece os dados necessário para, por exemplo,
+        // exibir o nome do usuário na interface.
+        res.status(200).json({
+            message: "Usuário registrado com sucesso!",
+            user: { id: newUser.id, name: newUser.name, email: newUser.email },
+        });
+
+    } catch (error) {
+        console.error("Erro ao registrar usuário: " + error);
+        res.status(500).json({ message: "Erro ao registrar usuário: " + error });
+    }
+}
+
 export const forgotPassword = async (req: Request, res: Response): Promise<void> => {
     const { email } = req.body;
 
@@ -15,7 +52,7 @@ export const forgotPassword = async (req: Request, res: Response): Promise<void>
             return;
         }
 
-        const token = jwt.sign({ email }, 'chave_secreta', { expiresIn: '1h' });
+        const token = jwt.sign({ email }, process.env.JWT_SECRET!, { expiresIn: '1h' });
         const link = `http://localhost:3000/reset-password?token=${token}`;
 
         await transporter.sendMail({
@@ -34,7 +71,7 @@ export const resetPassword = async (req: Request, res: Response): Promise<void> 
     const { token, newPassword } = req.body;
 
     try {
-        const { email } = jwt.verify(token, 'chave_secreta') as { email: string };
+        const { email } = jwt.verify(token, process.env.JWT_SECRET!) as { email: string };
         const user = await User.findOne({ where: { email } });
 
         if (!user) {
