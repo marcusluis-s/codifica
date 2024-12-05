@@ -1,8 +1,15 @@
 import express, { Application } from "express";
 import authRoutes from "./routes/auth";
 import sequelize from "./config/dbConfig";
+import cors from "cors";
 
 const app: Application = express();
+
+// Configura o CORS para receber requisições de todos os domínios
+// app.use(cors());
+
+// Permitir requisições de um domínio específico, por exemplo:
+app.use(cors({ origin: "http://localhost:5173" }));
 
 // Middlewares
 app.use(express.json());

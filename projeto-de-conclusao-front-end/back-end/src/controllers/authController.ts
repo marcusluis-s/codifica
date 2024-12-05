@@ -41,6 +41,29 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
     }
 }
 
+export const loginUser = async (req: Request, res: Response) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ where: { email } });
+        if (!user) {
+            res.status(404).json({ message: "Usuário não encontrado." });
+            return;
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            res.status(401).json({ message: "Credenciais inválidas." });
+        }
+
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, { expiresIn: "1h" });
+        res.status(200).json({ token });
+
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao fazer Login.", error });
+    }
+}
+
 // Envia um e-mail com um link para redefinir a senha
 export const forgotPassword = async (req: Request, res: Response): Promise<void> => {
     const { email } = req.body;
