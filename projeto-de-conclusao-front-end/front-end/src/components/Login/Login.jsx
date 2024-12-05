@@ -19,19 +19,27 @@ function Login() {
 
     // Código relacionado ao Login com o Google
     const handleLoginSuccess = (response) => {
-        console.log("Credenciais: ", response.credential);
+        try {
+            if (response && response.credential) {
+                const decodedJwt = jwtDecode(response.credential);
+                console.log("Decoded JWT:", decodedJwt);
 
-        const decodedJwt = jwtDecode(response.credential);
-        console.log(decodedJwt);
+                localStorage.setItem("token", response.credential);
 
-        setUser(decodedJwt);
+                setUser(decodedJwt);
 
-        navigate("/products");
+                navigate("/products");
+            } else {
+                console.error("Credenciais não encontradas.");
+            }
+        } catch (error) {
+            console.error("Erro ao processar o login com o Google:", error);
+        }
     }
 
     // Código relacionado ao Login com o Google
     const handleLoginFailure = (error) => {
-        console.error("Erro ao autentiticar: ", error);
+        console.error("Erro ao autentiticar com o Google:", error);
     }
 
     const handleLogin = async (event) => {
@@ -52,11 +60,12 @@ function Login() {
             }
 
             const receivedData = await response.json();
-            console.log("Resposta da API: " + receivedData);
+            console.log("Resposta da API:", receivedData);
 
             setUser(receivedData.user);
             localStorage.setItem("token", receivedData.token);
 
+            console.log("Navegando para a rota /products");
             navigate("/products");
 
         } catch (err) {
@@ -77,19 +86,20 @@ function Login() {
                 <div>
                     <section>
                         <header>
-                            <h2>Faça login com sua conta do Google</h2>
+                            <h2>Faça o Login Com Sua Conta do Google</h2>
                         </header>
                         <div className={styles["login-button-container"]}>
                             <GoogleLogin
                                 onSuccess={handleLoginSuccess}
                                 onError={handleLoginFailure}
+                                clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
                             />
                         </div>
                     </section>
 
                     <form className={styles["login-container"]} onSubmit={handleLogin}>
                         <header>
-                            <h2>Ou faça seu login com um email</h2>
+                            <h2>Faça o Login Com o Seu Email</h2>
                         </header>
 
                         {error && <p style={{ color: "red" }}>{error}</p>}

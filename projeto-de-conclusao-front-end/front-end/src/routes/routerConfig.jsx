@@ -17,7 +17,7 @@ const routerConfig = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
             { path: "/", element: <App /> },
-            { path: "forgot-password", element: <ForgotPassword /> },
+            { path: "/forgot-password", element: <ForgotPassword /> },
             { path: "/login", element: <Login /> },
             { path: "/signup", element: <SignUp /> }
         ],
@@ -33,7 +33,7 @@ const routerConfig = createBrowserRouter([
             </PrivateRoute>
         ),
         children: [
-            { path: "products", element: <Products /> },
+            { path: "/products", element: <Products /> },
         ],
     },
 ]);

@@ -6,8 +6,11 @@ PrivateRoute.propTypes = {
 };
 
 function PrivateRoute({ children }) {
-    const isLoggedIn = false;
-    return isLoggedIn ? children : <Navigate to="/" />
+    const token = localStorage.getItem("token");
+
+    const isLoggedIn = !!token;
+
+    return isLoggedIn ? children : <Navigate to="/login" />
 }
 
 export default PrivateRoute;
