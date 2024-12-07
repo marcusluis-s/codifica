@@ -8,19 +8,21 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    --primary-color-dark-mode: #010102;
-    --secondary-color-dark-mode: #484E87;
-    --tertiary-color-dark-mode: #676FBE;
-    --bg-color-button-light-mode: #E2E6F9;
-    --text-color-button-light-mode: #4F5678;
-    --text-color-dark-mode: #E0E0E0;
+    --background-color: #F0F2FC;
+    --primary-color: #C6CDF3;
+    --secondary-color: #919AE4;
+    --button-bg-color: #7881DB;
+    --button-text-color: #FFFFFF;
+    --text-color: #1E1E1E;
+}
 
-    --primary-color-light-mode: #F0F2FC;
-    --secondary-color-light-mode: #C6CDF3;
-    --tertiary-color-light-mode: #919AE4;
-    --bg-color-button-light-mode: #7881DB;
-    --text-color-button-light-mode: #FFFFFF;
-    --text-color-light-mode: #1E1E1E;
+[data-theme="dark"] {
+    --background-color: #010102;
+    --primary-color: #484E87;
+    --secondary-color: #676FBE;
+    --button-bg-color: #E2E6F9;
+    --button-text-color: #4F5678;
+    --text-color: #E0E0E0;
 }
 
 *,
@@ -41,6 +43,9 @@ html:focus-within {
 hmtl,
 body {
     height: 100%;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 button {
@@ -69,6 +74,7 @@ h6 {
 
 a {
     text-decoration: none;
+    color: #0171D9;
 }
 
 a:hover {

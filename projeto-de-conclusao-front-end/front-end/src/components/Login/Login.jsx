@@ -17,7 +17,7 @@ function Login() {
 
     const navigate = useNavigate();
 
-    // Código relacionado ao Login com o Google
+    // handleLoginSuccess está relacionado ao Login com o Google
     const handleLoginSuccess = (response) => {
         try {
             if (response && response.credential) {
@@ -37,7 +37,7 @@ function Login() {
         }
     }
 
-    // Código relacionado ao Login com o Google
+    // handleLoginFailure está relacionado ao Login com o Google
     const handleLoginFailure = (error) => {
         console.error("Erro ao autentiticar com o Google:", error);
     }
@@ -62,8 +62,8 @@ function Login() {
             const receivedData = await response.json();
             console.log("Resposta da API:", receivedData);
 
-            setUser(receivedData.user);
             localStorage.setItem("token", receivedData.token);
+            setUser(receivedData.user);
 
             console.log("Navegando para a rota /products");
             navigate("/products");

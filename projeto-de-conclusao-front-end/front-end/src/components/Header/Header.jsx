@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styles from "./Header.module.css";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 function Header({ user, handleSignOut }) {
     return (
@@ -8,6 +9,8 @@ function Header({ user, handleSignOut }) {
                 <h3>{user.name}</h3>
                 <img src={user.picture} alt="Imagem do perfil do usuário" />
             </div>
+
+            <ThemeToggle />
 
             <button onClick={handleSignOut}>Sair</button>
         </header>
