@@ -1,0 +1,25 @@
+.breadcrumbs-display-flex {
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary-color);
+    padding: 8px 0;
+}
+
+.breadcrumbs-margin-right {
+    display: inline-block;
+    margin-right: 8px;
+    color: var(--primary-color);
+    text-decoration: none;
+    /* font-weight: bold; */
+}
+
+.breadcrumbs-margin-right::after {
+    content: ">";
+    margin-left: 8px;
+    color: var(--primary-color);
+}
+
+.breadcrumbs-margin-right:last-child::after {
+    /* Remove o separador do último item */
+    content: "";
+}

@@ -8,6 +8,8 @@ import PublicLayout from "./layouts/PublicLayout";
 import PrivateLayout from "./layouts/PrivateLayout";
 import Login from "../components/Login/Login";
 import SignUp from "../components/SignUp/SignUp";
+import Contact from "../pages/Contact/Contact";
+import About from "../pages/About/About";
 
 const routerConfig = createBrowserRouter([
     // Public Routes Group
@@ -34,6 +36,8 @@ const routerConfig = createBrowserRouter([
         ),
         children: [
             { path: "/products", element: <Products /> },
+            { path: "/contact", element: <Contact /> },
+            { path: "/about", element: <About /> },
         ],
     },
 ]);
