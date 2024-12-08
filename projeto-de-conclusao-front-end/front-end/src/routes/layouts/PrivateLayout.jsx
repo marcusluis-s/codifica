@@ -17,7 +17,9 @@ function PrivateLayout() {
     return (
         <div>
             <Header user={safeUser} handleSignOut={handleSignOut} />
-            <Outlet />
+            <main>
+                <Outlet />
+            </main>
         </div>
     )
 }

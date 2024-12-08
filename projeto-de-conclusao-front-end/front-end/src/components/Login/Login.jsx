@@ -3,14 +3,13 @@ import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
-import Header from "../Header/Header"
 
 function Login() {
     // Criar lógica (Regex) para verificar o e-mail fornecido é válido.
     // Criar lógica para verificar se o e-mail fornecido está cadastrado
     // no banco de dados.
 
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -25,8 +24,9 @@ function Login() {
                 console.log("Decoded JWT:", decodedJwt);
 
                 localStorage.setItem("token", response.credential);
+                localStorage.setItem("user", JSON.stringify(decodedJwt));
 
-                setUser(decodedJwt);
+                // setUser(decodedJwt);
 
                 navigate("/products");
             } else {
@@ -63,9 +63,16 @@ function Login() {
             console.log("Resposta da API:", receivedData);
 
             localStorage.setItem("token", receivedData.token);
-            setUser(receivedData.user);
 
-            console.log("Navegando para a rota /products");
+            // Decodificar o token para obter o nome do usuário
+            const decodedToken = jwtDecode(receivedData.token);
+            const user = {
+                name: decodedToken.name, // Extraído do token
+            };
+
+            // Salvar o usuário no localStorage
+            localStorage.setItem("user", JSON.stringify(user));
+
             navigate("/products");
 
         } catch (err) {
@@ -73,71 +80,60 @@ function Login() {
         }
     }
 
-    const handleSignOut = () => {
-        setUser(null);
-        localStorage.removeItem("token");
-    }
-
     return (
         <div>
-            {user ? (
-                <Header user={user} handleSignOut={handleSignOut} />
-            ) : (
-                <div>
-                    <section>
-                        <header>
-                            <h2>Faça o Login Com Sua Conta do Google</h2>
-                        </header>
-                        <div className={styles["login-button-container"]}>
-                            <GoogleLogin
-                                onSuccess={handleLoginSuccess}
-                                onError={handleLoginFailure}
-                                clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
-                            />
-                        </div>
-                    </section>
-
-                    <form className={styles["login-container"]} onSubmit={handleLogin}>
-                        <header>
-                            <h2>Faça o Login Com o Seu Email</h2>
-                        </header>
-
-                        {error && <p style={{ color: "red" }}>{error}</p>}
-
-                        <label htmlFor="email">Email:</label>
-                        <div>
-                            <input
-                                type="email"
-                                id="email"
-                                placeholder="Digite seu email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </div>
-
-                        <label htmlFor="password">Senha:</label>
-                        <div>
-                            <input
-                                type="password"
-                                id="password"
-                                placeholder="Digite sua senha"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div>
-
-                        <div>
-                            <button type="submit">Entrar</button>
-                        </div>
-
-                        <Link to="/forgot-password">Esqueceu sua senha?</Link>
-
-                        <p>
-                            Não possui uma conta? Faça seu <Link to="/signup">Cadastro</Link>
-                        </p>
-                    </form>
+            <section>
+                <header>
+                    <h2>Faça o Login Com Sua Conta do Google</h2>
+                </header>
+                <div className={styles["login-button-container"]}>
+                    <GoogleLogin
+                        onSuccess={handleLoginSuccess}
+                        onError={handleLoginFailure}
+                        clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
+                    />
                 </div>
-            )}
+            </section>
+
+            <form className={styles["login-container"]} onSubmit={handleLogin}>
+                <header>
+                    <h2>Faça o Login Com o Seu Email</h2>
+                </header>
+
+                {error && <p style={{ color: "red" }}>{error}</p>}
+
+                <label htmlFor="email">Email:</label>
+                <div>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
+
+                <label htmlFor="password">Senha:</label>
+                <div>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Digite sua senha"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+
+                <div>
+                    <button type="submit">Entrar</button>
+                </div>
+
+                <Link to="/forgot-password">Esqueceu sua senha?</Link>
+
+                <p>
+                    Não possui uma conta? Faça seu <Link to="/signup">Cadastro</Link>
+                </p>
+            </form>
         </div>
     );
 }
