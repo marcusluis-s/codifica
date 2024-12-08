@@ -10,6 +10,7 @@ import Login from "../components/Login/Login";
 import SignUp from "../components/SignUp/SignUp";
 import Contact from "../pages/Contact/Contact";
 import About from "../pages/About/About";
+import Home from "../pages/Home/Home";
 
 const routerConfig = createBrowserRouter([
     // Public Routes Group
@@ -35,9 +36,10 @@ const routerConfig = createBrowserRouter([
             </PrivateRoute>
         ),
         children: [
-            { path: "/products", element: <Products /> },
-            { path: "/contact", element: <Contact /> },
-            { path: "/about", element: <About /> },
+            { path: "/home", element: <Home /> },
+            { path: "/home/products", element: <Products /> },
+            { path: "/home/contact", element: <Contact /> },
+            { path: "/home/about", element: <About /> },
         ],
     },
 ]);

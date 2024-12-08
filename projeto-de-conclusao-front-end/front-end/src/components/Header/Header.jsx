@@ -20,9 +20,9 @@ function Header({ user, handleSignOut }) {
                 <div className={styles["header-user-actions"]}>
                     <ThemeToggle />
                     <nav className={styles["header-navigation"]}>
-                        <Link to="/products">Produtos</Link>
-                        <Link to="/contact">Contato</Link>
-                        <Link to="/about">Sobre</Link>
+                        <Link to="/home/products">Produtos</Link>
+                        <Link to="/home/contact">Contato</Link>
+                        <Link to="/home/about">Sobre</Link>
                     </nav>
                     <button onClick={handleSignOut}>Sair</button>
                 </div>
