@@ -1,7 +1,14 @@
 import dontenv from "dotenv";
 import { Sequelize } from "sequelize";
 
+// Carregar variáveis de ambiente
 dontenv.config();
+
+// Validação do dialeto
+const allowedDialects = ["mysql", "sqlite", "postgres", "mssql"];
+if (!allowedDialects.includes(process.env.DB_DIALECT || "")) {
+    throw new Error("DB_DIALECT inválido. Use um valor válido como mysql, sqlite, postgres ou mssql.");
+}
 
 const sequelize = new Sequelize(
     process.env.DB_NAME || "default_db",
@@ -14,9 +21,10 @@ const sequelize = new Sequelize(
     }
 );
 
-sequelize.authenticate()
+sequelize
+    .authenticate()
     .then(() => {
-        console.log("Conexão com MySQL bem-sucedida.");
+        console.log("Conexão com o banco de dados bem-sucedida.");
     })
     .catch((error) => {
         console.error("Erro ao conectar ao MySQL", error);
@@ -28,7 +36,7 @@ sequelize.sync({ alter: true }) // Use `force: true` para recriar tabelas, ou `a
         console.log("Tabelas sincronizadas com sucesso!");
     })
     .catch((error) => {
-        console.error("Erro ao sincronizar tabelas.");
+        console.error("Erro ao sincronizar tabelas.", error);
     });
 
 export default sequelize;

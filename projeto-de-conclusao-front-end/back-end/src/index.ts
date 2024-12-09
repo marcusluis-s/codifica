@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import authRoutes from "./routes/auth";
+import productRoutes from "./routes/product";
 import sequelize from "./config/dbConfig";
 import cors from "cors";
 
@@ -19,14 +20,16 @@ app.get("/", (req, res) => {
     res.status(200).json({ message: "Welcome, /home 🏡" });
 });
 app.use("/auth", authRoutes);
+app.use("/api", productRoutes);
 
-sequelize.authenticate()
-    .then(() => {
-        console.log("Conectado ao MySQL");
-    })
-    .catch((err) => {
-        console.error("Erro ao conectgar ao MySQL.", err);
-    });
+// sequelize
+//     .authenticate()
+//     .then(() => {
+//         console.log("Conectado ao banco de dados.");
+//     })
+//     .catch((err) => {
+//         console.error("Erro ao conectar ao MySQL.", err);
+//     });
 
 // Starting the server
 const PORT = process.env.PORT || 3000;
