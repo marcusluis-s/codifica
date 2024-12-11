@@ -1,8 +1,8 @@
 import express, { Application } from "express";
 import authRoutes from "./routes/auth";
 import productRoutes from "./routes/product";
-import sequelize from "./config/dbConfig";
 import cors from "cors";
+import path from "path";
 
 const app: Application = express();
 
@@ -15,21 +15,15 @@ app.use(cors({ origin: "http://localhost:5173" }));
 // Middlewares
 app.use(express.json());
 
+// Middleware para arquivos estáticos
+app.use('/public', express.static(path.join(__dirname, "../public")));
+
 // Rotas
 app.get("/", (req, res) => {
     res.status(200).json({ message: "Welcome, /home 🏡" });
 });
 app.use("/auth", authRoutes);
 app.use("/api", productRoutes);
-
-// sequelize
-//     .authenticate()
-//     .then(() => {
-//         console.log("Conectado ao banco de dados.");
-//     })
-//     .catch((err) => {
-//         console.error("Erro ao conectar ao MySQL.", err);
-//     });
 
 // Starting the server
 const PORT = process.env.PORT || 3000;
