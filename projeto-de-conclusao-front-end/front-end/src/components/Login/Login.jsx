@@ -28,7 +28,7 @@ function Login() {
 
                 // setUser(decodedJwt);
 
-                navigate("/products");
+                navigate("/home/products");
             } else {
                 console.error("Credenciais não encontradas.");
             }
@@ -73,7 +73,7 @@ function Login() {
             // Salvar o usuário no localStorage
             localStorage.setItem("user", JSON.stringify(user));
 
-            navigate("/products");
+            navigate("/home/products");
 
         } catch (err) {
             setError(err.message);
