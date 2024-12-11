@@ -14,7 +14,14 @@ export const getAllProducts = async (req: Request, res: Response) => {
             attributes: ["id", "name", "price", "description", "averageRating", "imagePath"],
         });
 
-        res.status(200).json(products);
+        const updatedProducts = products.map((product) => {
+            return {
+                ...product.toJSON(),
+                imagePath: `http://localhost:3000/${product.imagePath.replace('public/', '')}`,
+            }
+        });
+
+        res.status(200).json(updatedProducts);
     } catch (error) {
         res.status(500).json({ message: "Erro ao listar produtos.", error });
     }

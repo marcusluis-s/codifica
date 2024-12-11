@@ -16,7 +16,9 @@ app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 
 // Middleware para arquivos estáticos
-app.use('/public', express.static(path.join(__dirname, "../public")));
+// app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use("/images", express.static(path.join(process.cwd(), "dist/public/images")));
+console.log("Servindo imagens de:", path.join(process.cwd(), "dist/public/images"));
 
 // Rotas
 app.get("/", (req, res) => {

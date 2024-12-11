@@ -4,167 +4,167 @@
         "price": 29.99,
         "description": "Descrição do Produto 1",
         "averageRating": 0,
-        "imagePath": "public/images/products/img1.webp"
+        "imagePath": "images/products/img1.webp"
     },
     {
         "name": "Produto 2",
         "price": 29.99,
         "description": "Descrição do Produto 2",
         "averageRating": 0,
-        "imagePath": "public/images/products/img2.webp"
+        "imagePath": "images/products/img2.webp"
     },
     {
         "name": "Produto 3",
         "price": 29.99,
         "description": "Descrição do Produto 3",
         "averageRating": 0,
-        "imagePath": "public/images/products/img3.webp"
+        "imagePath": "images/products/img3.webp"
     },
     {
         "name": "Produto 4",
         "price": 29.99,
         "description": "Descrição do Produto 4",
         "averageRating": 0,
-        "imagePath": "public/images/products/img4.webp"
+        "imagePath": "images/products/img4.webp"
     },
     {
         "name": "Produto 5",
         "price": 29.99,
         "description": "Descrição do Produto 4",
         "averageRating": 0,
-        "imagePath": "public/images/products/img5.webp"
+        "imagePath": "images/products/img5.webp"
     },
     {
         "name": "Produto 6",
         "price": 29.99,
         "description": "Descrição do Produto 6",
         "averageRating": 0,
-        "imagePath": "public/images/products/img6.webp"
+        "imagePath": "images/products/img6.webp"
     },
     {
         "name": "Produto 7",
         "price": 29.99,
         "description": "Descrição do Produto 7",
         "averageRating": 0,
-        "imagePath": "public/images/products/img7.webp"
+        "imagePath": "images/products/img7.webp"
     },
     {
         "name": "Produto 8",
         "price": 29.99,
         "description": "Descrição do Produto 8",
         "averageRating": 0,
-        "imagePath": "public/images/products/img8.webp"
+        "imagePath": "images/products/img8.webp"
     },
     {
         "name": "Produto 9",
         "price": 29.99,
         "description": "Descrição do Produto 9",
         "averageRating": 0,
-        "imagePath": "public/images/products/img9.webp"
+        "imagePath": "images/products/img9.webp"
     },
     {
         "name": "Produto 10",
         "price": 29.99,
         "description": "Descrição do Produto 10",
         "averageRating": 0,
-        "imagePath": "public/images/products/img10.webp"
+        "imagePath": "images/products/img10.webp"
     },
     {
         "name": "Produto 11",
         "price": 29.99,
         "description": "Descrição do Produto 11",
         "averageRating": 0,
-        "imagePath": "public/images/products/img11.webp"
+        "imagePath": "images/products/img11.webp"
     },
     {
         "name": "Produto 12",
         "price": 29.99,
         "description": "Descrição do Produto 12",
         "averageRating": 0,
-        "imagePath": "public/images/products/img12.webp"
+        "imagePath": "images/products/img12.webp"
     },
     {
         "name": "Produto 13",
         "price": 29.99,
         "description": "Descrição do Produto 13",
         "averageRating": 0,
-        "imagePath": "public/images/products/img13.webp"
+        "imagePath": "images/products/img13.webp"
     },
     {
         "name": "Produto 14",
         "price": 29.99,
         "description": "Descrição do Produto 14",
         "averageRating": 0,
-        "imagePath": "public/images/products/img14.webp"
+        "imagePath": "images/products/img14.webp"
     },
     {
         "name": "Produto 15",
         "price": 29.99,
         "description": "Descrição do Produto 15",
         "averageRating": 0,
-        "imagePath": "public/images/products/img15.webp"
+        "imagePath": "images/products/img15.webp"
     },
     {
         "name": "Produto 16",
         "price": 29.99,
         "description": "Descrição do Produto 16",
         "averageRating": 0,
-        "imagePath": "public/images/products/img16.webp"
+        "imagePath": "images/products/img16.webp"
     },
     {
         "name": "Produto 17",
         "price": 29.99,
         "description": "Descrição do Produto 17",
         "averageRating": 0,
-        "imagePath": "public/images/products/img17.webp"
+        "imagePath": "images/products/img17.webp"
     },
     {
         "name": "Produto 18",
         "price": 29.99,
         "description": "Descrição do Produto 18",
         "averageRating": 0,
-        "imagePath": "public/images/products/img18.webp"
+        "imagePath": "images/products/img18.webp"
     },
     {
         "name": "Produto 19",
         "price": 29.99,
         "description": "Descrição do Produto 19",
         "averageRating": 0,
-        "imagePath": "public/images/products/img19.webp"
+        "imagePath": "images/products/img19.webp"
     },
     {
         "name": "Produto 20",
         "price": 29.99,
         "description": "Descrição do Produto 20",
         "averageRating": 0,
-        "imagePath": "public/images/products/img20.webp"
+        "imagePath": "images/products/img20.webp"
     },
     {
         "name": "Produto 21",
         "price": 29.99,
         "description": "Descrição do Produto 21",
         "averageRating": 0,
-        "imagePath": "public/images/products/img21.webp"
+        "imagePath": "images/products/img21.webp"
     },
     {
         "name": "Produto 22",
         "price": 29.99,
         "description": "Descrição do Produto 22",
         "averageRating": 0,
-        "imagePath": "public/images/products/img22.webp"
+        "imagePath": "images/products/img22.webp"
     },
     {
         "name": "Produto 23",
         "price": 29.99,
         "description": "Descrição do Produto 23",
         "averageRating": 0,
-        "imagePath": "public/images/products/img23.webp"
+        "imagePath": "images/products/img23.webp"
     },
     {
         "name": "Produto 24",
         "price": 29.99,
         "description": "Descrição do Produto 24",
         "averageRating": 0,
-        "imagePath": "public/images/products/img24.webp"
+        "imagePath": "images/products/img24.webp"
     }
 ]
