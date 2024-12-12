@@ -3,6 +3,11 @@ import Product from "../models/productModel"
 import Review from "../models/reviewModel"
 
 export const getAllProducts = async (req: Request, res: Response) => {
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || 10;
+
+    const offset = (page - 1) * limit;
+
     try {
         const products = await Product.findAll({
             include: [
@@ -12,6 +17,8 @@ export const getAllProducts = async (req: Request, res: Response) => {
                 },
             ],
             attributes: ["id", "name", "price", "description", "averageRating", "imagePath"],
+            offset,
+            limit,
         });
 
         const updatedProducts = products.map((product) => {

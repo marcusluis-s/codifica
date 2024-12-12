@@ -30,7 +30,7 @@
     {
         "name": "Produto 5",
         "price": 29.99,
-        "description": "Descrição do Produto 4",
+        "description": "Descrição do Produto 5",
         "averageRating": 0,
         "imagePath": "images/products/img5.webp"
     },
