@@ -11,6 +11,7 @@ import SignUp from "../components/SignUp/SignUp";
 import Contact from "../pages/Contact/Contact";
 import About from "../pages/About/About";
 import Home from "../pages/Home/Home";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 
 const routerConfig = createBrowserRouter([
     // Public Routes Group
@@ -38,6 +39,7 @@ const routerConfig = createBrowserRouter([
         children: [
             { path: "/home", element: <Home /> },
             { path: "/home/products", element: <Products /> },
+            { path: "/home/products:id", element: <ProductDetails /> },
             { path: "/home/contact", element: <Contact /> },
             { path: "/home/about", element: <About /> },
         ],

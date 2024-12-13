@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Products.module.css";
+import { Link } from "react-router-dom";
 
 function Products() {
     const [products, setProducts] = useState([]);
@@ -104,6 +105,9 @@ function Products() {
                             src={item.imagePath}
                             alt="Imagem de alguma peça de roupa do Flamengo"
                         />
+                        <div>
+                            <Link to={`/home/products/${item.id}`}>Ver detalhes</Link>
+                        </div>
                     </div>
                 );
             })}
