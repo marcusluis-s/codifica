@@ -55,6 +55,10 @@ function ProductDetails() {
     return (
         <div>
             <h1>{product.name}</h1>
+            <img
+                src={product.imagePath}
+                alt={product.name}
+            />
             <p>Descrição: {product.description}</p>
             <p>Preço: {product.price}</p>
             <p>Avaliação Média: {product.averageRating}</p>

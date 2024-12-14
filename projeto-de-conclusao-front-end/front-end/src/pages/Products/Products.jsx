@@ -18,7 +18,7 @@ function Products() {
             await new Promise((resolve) => {
                 setTimeout(() => {
                     resolve();
-                }, page === 1 ? 3000 : 2000);
+                }, page === 1 ? 2000 : 2000);
             });
 
             const response = await fetch(`http://localhost:3000/api/products?page=${page}&limit=10`);

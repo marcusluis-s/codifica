@@ -39,7 +39,7 @@ const routerConfig = createBrowserRouter([
         children: [
             { path: "/home", element: <Home /> },
             { path: "/home/products", element: <Products /> },
-            { path: "/home/products:id", element: <ProductDetails /> },
+            { path: "/home/products/:id", element: <ProductDetails /> },
             { path: "/home/contact", element: <Contact /> },
             { path: "/home/about", element: <About /> },
         ],
