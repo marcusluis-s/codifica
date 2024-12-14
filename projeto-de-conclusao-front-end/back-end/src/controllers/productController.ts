@@ -43,7 +43,13 @@ export const getProductById = async (req: Request, res: Response, next: NextFunc
 
         const product = await Product.findOne({
             where: { id },
-            include: [{ model: Review, as: "reviews" }],
+            include: [
+                {
+                    model: Review,
+                    as: "reviews",
+                    attributes: ["id", "comment", "rating", "createdAt"],
+                },
+            ],
         });
 
         if (!product) {
@@ -82,8 +88,8 @@ export const addReview = async (req: Request, res: Response) => {
         const review = await Review.create({ productId: parseInt(productId), comment, rating });
 
         const reviews = await Review.findAll({ where: { productId } });
-        const averageRating = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
-        await Product.update({ averageRating }, { where: { id: productId } });
+        const averageRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+        await Product.update({ averageRating: parseFloat(averageRating) }, { where: { id: productId } });
 
         res.status(201).json(review);
     } catch (error) {
