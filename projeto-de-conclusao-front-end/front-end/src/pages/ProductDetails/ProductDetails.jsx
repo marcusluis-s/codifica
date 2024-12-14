@@ -59,16 +59,18 @@ function ProductDetails() {
                 src={product.imagePath}
                 alt={product.name}
             />
-            <p>Descrição: {product.description}</p>
-            <p>Preço: {product.price}</p>
-            <p>Avaliação Média: {product.averageRating}</p>
+            <p><strong>Descrição:</strong> {product.description}</p>
+            <p><strong>Preço:</strong> {product.price}</p>
+            <p><strong>Avaliação Média:</strong> {product.averageRating}</p>
 
             <h2>Avaliações</h2>
             {reviews.length > 0 ? (
                 reviews.map((review) => (
                     <div key={review.id}>
-                        <p>Comentário: {review.comment}</p>
-                        <p>Avaliação: {review.rating}</p>
+                        <p><strong>Comentário:</strong> {review.comment}</p>
+                        <p><strong>Avaliação:</strong> {review.rating}</p>
+                        <p><small>Publicado em: {new Date(review.createdAt).toLocaleDateString()}</small></p>
+                        <hr />
                     </div>
                 ))
             ) : (
