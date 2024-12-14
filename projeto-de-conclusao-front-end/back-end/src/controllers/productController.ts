@@ -1,4 +1,4 @@
-import { Request, Response } from "express"
+import { NextFunction, Request, Response } from "express"
 import Product from "../models/productModel"
 import Review from "../models/reviewModel"
 
@@ -31,6 +31,35 @@ export const getAllProducts = async (req: Request, res: Response) => {
         res.status(200).json(updatedProducts);
     } catch (error) {
         res.status(500).json({ message: "Erro ao listar produtos.", error });
+    }
+};
+
+export const getProductById = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    try {
+        const id = parseInt(req.params.id, 10);
+        if (isNaN(id)) {
+            return res.status(400).json({ message: "ID do produto inválido." });
+        }
+
+        const product = await Product.findOne({
+            where: { id },
+            include: [{ model: Review, as: "reviews" }],
+        });
+
+        if (!product) {
+            return res.status(404).json({ message: "Produto não encontrado." });
+        }
+
+        const updatedProduct = {
+            ...product.toJSON(),
+            imagePath: product.imagePath
+                ? `http://localhost:3000/${product.imagePath.replace("public/", "")}`
+                : null,
+        };
+
+        res.status(200).json(updatedProduct);
+    } catch (error) {
+        next(error);
     }
 };
 
