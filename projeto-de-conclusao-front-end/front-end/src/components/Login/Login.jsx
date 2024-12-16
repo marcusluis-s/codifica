@@ -81,59 +81,63 @@ function Login() {
     }
 
     return (
-        <div>
-            <section>
-                <header>
-                    <h2>Faça o Login Com Sua Conta do Google</h2>
-                </header>
-                <div className={styles["login-button-container"]}>
-                    <GoogleLogin
-                        onSuccess={handleLoginSuccess}
-                        onError={handleLoginFailure}
-                        clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
-                    />
-                </div>
-            </section>
+        <div className={styles["login-container"]}>
+            <div className={styles["form-wrapper"]}>
+                <section className={styles["login-google"]}>
+                    <header>
+                        <h2>Login Com Sua Conta do Google</h2>
+                    </header>
+                    <div className={styles["login-button-container"]}>
+                        <GoogleLogin
+                            onSuccess={handleLoginSuccess}
+                            onError={handleLoginFailure}
+                            clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
+                        />
+                    </div>
+                </section>
 
-            <form className={styles["login-container"]} onSubmit={handleLogin}>
-                <header>
-                    <h2>Faça o Login Com o Seu Email</h2>
-                </header>
+                <form className={styles["form-container"]} onSubmit={handleLogin}>
+                    <header>
+                        <h2>Login Com Seu Email</h2>
+                    </header>
 
-                {error && <p style={{ color: "red" }}>{error}</p>}
+                    {error && <p style={{ color: "red" }}>{error}</p>}
 
-                <label htmlFor="email">Email:</label>
-                <div>
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Digite seu email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
+                    <label htmlFor="email">Email:</label>
+                    <div>
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Digite seu email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
 
-                <label htmlFor="password">Senha:</label>
-                <div>
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Digite sua senha"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
+                    <label htmlFor="password">Senha:</label>
+                    <div>
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Digite sua senha"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
 
-                <div>
-                    <button type="submit">Entrar</button>
-                </div>
+                    <div className={styles["forgot-password"]}>
+                        <Link to="/forgot-password">Esqueceu sua senha?</Link>
+                    </div>
 
-                <Link to="/forgot-password">Esqueceu sua senha?</Link>
+                    <div className={styles["container-login-button"]}>
+                        <button type="submit">Entrar</button>
+                    </div>
 
-                <p>
-                    Não possui uma conta? Faça seu <Link to="/signup">Cadastro</Link>
-                </p>
-            </form>
+                    <p>
+                        Não possui uma conta? Faça seu <Link to="/signup">Cadastro</Link>
+                    </p>
+                </form>
+            </div>
         </div>
     );
 }
