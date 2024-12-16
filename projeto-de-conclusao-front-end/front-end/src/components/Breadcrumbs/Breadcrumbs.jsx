@@ -23,8 +23,8 @@ function Breadcrumbs() {
         })
 
     return (
-        <nav aria-label="breadcrumbs">
-            <div className={styles["breadcrumbs-display-flex"]}>
+        <nav aria-label="breadcrumbs" className={styles["breadcrumbs-container"]}>
+            <div className={styles["breadcrumbs-wrapper"]}>
                 {crumbs.length > 0 ? crumbs : <span>Home</span>}
             </div>
         </nav>

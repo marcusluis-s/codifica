@@ -26,6 +26,11 @@
     display: inline-block;
 }
 
+.form-container {
+    width: 400px;
+    max-width: 400px;
+}
+
 .form-container header {
     margin-bottom: 5px;
 }

@@ -96,18 +96,21 @@ function Products() {
 
             {products && products.map((item, index) => {
                 return (
-                    <div key={item.id || index}>
-                        <p>Nome: {item.name}</p>
-                        <p>Descrição: {item.description}</p>
-                        <p>Preço: {item.price}</p>
-                        <p>Avaliação: {item.averageRating}</p>
+                    <div key={item.id || index} className={styles["product"]}>
+                        <div className={styles["product-info"]}>
+                            <p>Nome: {item.name}</p>
+                            <p>Descrição: {item.description}</p>
+                            <p>Preço: {item.price}</p>
+                            <p>Avaliação: {item.averageRating}</p>
+                            {/* <div> */}
+                            <Link to={`/home/products/${item.id}`}>Ver detalhes</Link>
+                            {/* </div> */}
+                        </div>
                         <img
                             src={item.imagePath}
                             alt="Imagem de alguma peça de roupa do Flamengo"
                         />
-                        <div>
-                            <Link to={`/home/products/${item.id}`}>Ver detalhes</Link>
-                        </div>
+
                     </div>
                 );
             })}

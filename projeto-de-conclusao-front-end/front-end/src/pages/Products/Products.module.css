@@ -1,5 +1,27 @@
+.product {
+    display: flex;
+    background-color: var(--primary-color);
+    border: 1px solid #555;
+    justify-content: space-around;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product img {
+    height: 300px;
+}
+
 .loading-more-products {
-    color: blue;
-    padding: 1rem 0;
-    font-size: 2em;
+    color: var(--secondary-color);
+    padding: 1rem;
+    font-size: 1.2em;
+    text-align: center;
 }
