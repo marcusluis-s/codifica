@@ -1,7 +1,19 @@
+import styles from "./About.module.css";
+
 function About() {
     return (
-        <div>
-            <h1>Sobre</h1>
+        <div className={styles["about-container"]}>
+            <h1>Sobre nós</h1>
+
+            <p>
+                Bem-vindo à nossa plataforma! Somos dedicados a oferecer produtos de alta
+                qualidade - <mark><em>pois são todos do Clube de Regatas do Flamengo</em></mark> -
+                e proporcionar uma experiência de compra <small>embora ainda não seja possível comprar</small> excepcional para nossos clientes.
+            </p>
+
+            <p>
+                Obrigado por escolher nossa plataforma.
+            </p>
         </div>
     );
 }

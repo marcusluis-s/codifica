@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styles from "./ProductDetails.module.css";
 
 function ProductDetails() {
     const { id } = useParams();
@@ -53,8 +54,11 @@ function ProductDetails() {
     if (!product) return <p>Carregando...</p>
 
     return (
-        <div>
-            <h1>{product.name}</h1>
+        <div className={styles["product-details-container"]}>
+            <header>
+                <h1>{product.name}</h1>
+            </header>
+
             <img
                 src={product.imagePath}
                 alt={product.name}
@@ -66,11 +70,10 @@ function ProductDetails() {
             <h2>Avaliações</h2>
             {reviews.length > 0 ? (
                 reviews.map((review) => (
-                    <div key={review.id}>
+                    <div key={review.id} className={styles["review"]}>
                         <p><strong>Comentário:</strong> {review.comment}</p>
                         <p><strong>Avaliação:</strong> {review.rating}</p>
                         <p><small>Publicado em: {new Date(review.createdAt).toLocaleDateString()}</small></p>
-                        <hr />
                     </div>
                 ))
             ) : (
