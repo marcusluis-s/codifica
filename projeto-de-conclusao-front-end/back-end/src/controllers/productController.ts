@@ -1,15 +1,22 @@
 import { NextFunction, Request, Response } from "express"
 import Product from "../models/productModel"
 import Review from "../models/reviewModel"
+import { Op } from "sequelize";
 
 export const getAllProducts = async (req: Request, res: Response) => {
     const page = parseInt(req.query.page as string) || 1;
     const limit = parseInt(req.query.limit as string) || 10;
+    const search = (req.query.search as string) || "";
 
     const offset = (page - 1) * limit;
 
     try {
+        const whereCondition = search
+            ? { name: { [Op.like]: `%${search}` } }
+            : {};
+
         const products = await Product.findAll({
+            where: whereCondition,
             include: [
                 {
                     model: Review,
