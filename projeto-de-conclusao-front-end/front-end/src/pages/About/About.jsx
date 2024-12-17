@@ -8,7 +8,7 @@ function About() {
             <p>
                 Bem-vindo à nossa plataforma! Somos dedicados a oferecer produtos de alta
                 qualidade - <mark><em>pois são todos do Clube de Regatas do Flamengo</em></mark> -
-                e proporcionar uma experiência de compra <small>embora ainda não seja possível comprar</small> excepcional para nossos clientes.
+                e proporcionar uma experiência de <strike>compra</strike> excepcional para nossos clientes.
             </p>
 
             <p>

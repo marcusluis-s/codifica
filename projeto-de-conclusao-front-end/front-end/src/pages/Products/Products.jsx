@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Products.module.css";
 import { Link } from "react-router-dom";
+import SearchProduct from "../../components/SearchProduct/SearchProduct";
 
 function Products() {
     const [products, setProducts] = useState([]);
@@ -8,6 +9,8 @@ function Products() {
     const [loading, setLoading] = useState(true); // Controla se algo está sendo carregado
     const [page, setPage] = useState(1); // Página atual
     const [hasMore, setHasMore] = useState(true); // Controla se há mais produtos para carrega
+
+    const [searchProduct, setSearchProduct] = useState("");
 
     const fetchProducts = async () => {
         if (!hasMore) return;
@@ -21,7 +24,10 @@ function Products() {
                 }, page === 1 ? 2000 : 2000);
             });
 
-            const response = await fetch(`http://localhost:3000/api/products?page=${page}&limit=10`);
+            const response = await fetch(
+                `http://localhost:3000/api/products?page=${page}&limit=10&search=${searchProduct}`
+            );
+
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -74,6 +80,10 @@ function Products() {
         }
     }
 
+    const filteredProducts = products.filter((product) => {
+        return product.name.toLowerCase().includes(searchProduct.toLowerCase());
+    });
+
     useEffect(() => {
         fetchProducts(); // Carrega os primeiros produtos ao montar o componente
     }, [page]);
@@ -88,13 +98,15 @@ function Products() {
 
     return (
         <div>
+            <SearchProduct searchProduct={searchProduct} setSearchProduct={setSearchProduct} />
+
             <h1>Página de Produtos</h1>
 
             {/* {loading && <span>Carregando produtos...</span>} */}
 
             {error && <span style={{ color: "red" }}>{error}</span>}
 
-            {products && products.map((item, index) => {
+            {filteredProducts.map((item, index) => {
                 return (
                     <div key={item.id || index} className={styles["product"]}>
                         <div className={styles["product-info"]}>
