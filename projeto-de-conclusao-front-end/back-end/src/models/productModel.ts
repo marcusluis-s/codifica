@@ -47,7 +47,7 @@ Product.init(
         },
         imagePath: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         }
     },
     {

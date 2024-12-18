@@ -3,6 +3,13 @@ import Product from "../models/productModel"
 import Review from "../models/reviewModel"
 import { Op } from "sequelize";
 
+interface AuthRequest extends Request {
+    user?: {
+        id: number;
+        role: string;
+    }
+}
+
 export const getAllProducts = async (req: Request, res: Response) => {
     const page = parseInt(req.query.page as string) || 1;
     const limit = parseInt(req.query.limit as string) || 10;
@@ -28,10 +35,23 @@ export const getAllProducts = async (req: Request, res: Response) => {
             limit,
         });
 
+        // const updatedProducts = products.map((product) => ({
+        //     ...product.toJSON(),
+        //     imagePath: product.imagePath
+        //         ? product.imagePath.startsWith("http://") || product.imagePath.startsWith("https://")
+        //             ? product.imagePath // Caminhos absolutos permanecem como estão
+        //             : product.imagePath.startsWith("/uploads") // Caminhos com /uploads
+        //                 ? `http://localhost:3000${product.imagePath}`
+        //                 : product.imagePath.startsWith("images/products") // Caminhos antigos
+        //                     ? `http://localhost:3000/${product.imagePath}`
+        //                     : null
+        //         : null, // Se não houver imagePath
+        // }));
+
         const updatedProducts = products.map((product) => {
             return {
                 ...product.toJSON(),
-                imagePath: `http://localhost:3000/${product.imagePath.replace('public/', '')}`,
+                imagePath: `http://localhost:3000/${product.imagePath}`,
             }
         });
 
@@ -63,10 +83,23 @@ export const getProductById = async (req: Request, res: Response, next: NextFunc
             return res.status(404).json({ message: "Produto não encontrado." });
         }
 
+        // const updatedProduct = {
+        //     ...product.toJSON(),
+        //     imagePath: product.imagePath
+        //         ? product.imagePath.startsWith("http://") || product.imagePath.startsWith("https://")
+        //             ? product.imagePath
+        //             : product.imagePath.startsWith("/uploads")
+        //                 ? `http://localhost:3000${product.imagePath}`
+        //                 : product.imagePath.startsWith("images/products")
+        //                     ? `http://localhost:3000/${product.imagePath}`
+        //                     : null
+        //         : null,
+        // };
+
         const updatedProduct = {
             ...product.toJSON(),
             imagePath: product.imagePath
-                ? `http://localhost:3000/${product.imagePath.replace("public/", "")}`
+                ? `http://localhost:3000/${product.imagePath}`
                 : null,
         };
 
@@ -76,14 +109,32 @@ export const getProductById = async (req: Request, res: Response, next: NextFunc
     }
 };
 
-export const createProduct = async (req: Request, res: Response) => {
-    const { name, price, description, imagePath } = req.body;
+export const createProduct = async (req: AuthRequest, res: Response): Promise<void> => {
+    const { name, price, description } = req.body;
+
+    if (!req.user) {
+        res.status(401).json({ message: "Usuário não autenticado." });
+        return;
+    }
 
     try {
+        // O caminho do arquivo é gerado automaticamente pelo multer e salvo em `req.file`.
+        const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
+        console.log("Dados recebidos:", { name, price, description, imagePath });
+
+        // Criação do produto no banco de dados
         const product = await Product.create({ name, price, description, imagePath });
-        res.status(200).json(product);
+
+
+        res.status(201).json({
+            message: "Produto criado com sucesso!",
+            product,
+        })
     } catch (error) {
-        res.status(500).json({ message: "Erro ao criar produto." });
+        res.status(500).json({
+            message: "Erro ao criar produto.",
+            error: error instanceof Error ? error.message : "Erro desconhecido.",
+        });
     }
 };
 

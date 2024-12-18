@@ -41,7 +41,7 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
     }
 }
 
-export const loginUser = async (req: Request, res: Response) => {
+export const loginUser = async (req: Request, res: Response): Promise<any> => {
     const { email, password } = req.body;
 
     try {
@@ -54,10 +54,13 @@ export const loginUser = async (req: Request, res: Response) => {
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
             res.status(401).json({ message: "Credenciais inválidas." });
+            return;
         }
 
-        const token = jwt.sign({ id: user.id, name: user.name }, process.env.JWT_SECRET!, { expiresIn: "1h" });
-        res.status(200).json({ token });
+        // Cria o token com ID, name, e role
+        const token = jwt.sign({ id: user.id, name: user.name, role: user.role }, process.env.JWT_SECRET!, { expiresIn: "1h" });
+        // Retorna o token ao usuário
+        return res.status(200).json({ token, user: { name: user.name, role: user.role } });
 
     } catch (error) {
         res.status(500).json({ message: "Erro ao fazer Login.", error });
