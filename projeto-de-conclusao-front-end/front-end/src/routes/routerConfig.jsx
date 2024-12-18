@@ -12,6 +12,7 @@ import Contact from "../pages/Contact/Contact";
 import About from "../pages/About/About";
 import Home from "../pages/Home/Home";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
+import CreateProduct from "../pages/CreateProduct/CreateProduct";
 
 const routerConfig = createBrowserRouter([
     // Public Routes Group
@@ -42,6 +43,7 @@ const routerConfig = createBrowserRouter([
             { path: "/home/products/:id", element: <ProductDetails /> },
             { path: "/home/contact", element: <Contact /> },
             { path: "/home/about", element: <About /> },
+            { path: "/home/create-product", element: <CreateProduct /> }
         ],
     },
 ]);

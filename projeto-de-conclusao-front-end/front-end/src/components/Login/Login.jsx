@@ -62,12 +62,14 @@ function Login() {
             const receivedData = await response.json();
             console.log("Resposta da API:", receivedData);
 
+            // Salva o token no localStorage
             localStorage.setItem("token", receivedData.token);
 
             // Decodificar o token para obter o nome do usuário
             const decodedToken = jwtDecode(receivedData.token);
             const user = {
                 name: decodedToken.name, // Extraído do token
+                role: decodedToken.role,
             };
 
             // Salvar o usuário no localStorage

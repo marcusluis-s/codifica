@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 
 function PrivateLayout() {
     const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
+    console.log("Valor de user:", user);
 
     const navigate = useNavigate();
 
@@ -12,7 +13,12 @@ function PrivateLayout() {
         navigate("/login");
     }
 
-    const safeUser = user || {};
+    const safeUser = {
+        name: user?.name || "Usuário",
+        role: user?.role || "user",
+    }
+
+    console.log(safeUser);
 
     return (
         <div>

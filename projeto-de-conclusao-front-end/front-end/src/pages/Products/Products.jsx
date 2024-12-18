@@ -120,7 +120,7 @@ function Products() {
                         </div>
                         <img
                             src={item.imagePath}
-                            alt="Imagem de alguma peça de roupa do Flamengo"
+                            alt={item.name}
                         />
 
                     </div>

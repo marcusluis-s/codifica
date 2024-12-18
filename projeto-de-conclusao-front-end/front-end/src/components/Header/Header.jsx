@@ -9,6 +9,8 @@ function Header({ user, handleSignOut }) {
         return null;
     }
 
+    const role = user.role || "user";
+
     return (
         <div>
             <header className={styles["header"]}>
@@ -23,6 +25,10 @@ function Header({ user, handleSignOut }) {
                         <Link to="/home/products">Produtos</Link>
                         <Link to="/home/contact">Contato</Link>
                         <Link to="/home/about">Sobre</Link>
+
+                        {role === "admin" && (
+                            <Link to="/home/create-product">Criar produto</Link>
+                        )}
                     </nav>
                     <button onClick={handleSignOut}>Sair</button>
                 </div>
@@ -37,6 +43,7 @@ Header.propTypes = {
     user: PropTypes.shape({
         name: PropTypes.string.isRequired,
         // picture: PropTypes.string.isRequired,
+        role: PropTypes.string,
     }).isRequired,
     handleSignOut: PropTypes.func.isRequired,
 }

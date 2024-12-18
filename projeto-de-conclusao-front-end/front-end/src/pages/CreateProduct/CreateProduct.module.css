@@ -1,0 +1,47 @@
+.create-product-container {
+    background-color: var(--primary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0px 16px 24px rgba(2, 5, 10, 0.06);
+}
+
+.create-product-container header {
+    margin-bottom: 10px;
+}
+
+.create-product-container input,
+.create-product-container textarea,
+.create-product-container button {
+    padding: 0.6rem;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.create-product-container input[type="file"] {
+    padding: 0.6rem;
+    border: 2px solid var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.create-product-container form textarea {
+    resize: vertical;
+}
+
+.create-product-container form button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    transition: background-color 0.1s ease-in-out;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+}
+
+.create-product-container form button:hover {
+    background-color: var(--secondary-color);
+}
