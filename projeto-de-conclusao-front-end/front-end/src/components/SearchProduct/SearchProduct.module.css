@@ -12,7 +12,7 @@
 }
 
 .search-product-container form input:focus {
-    outline: 2px solid var(--primary-color);
+    outline: 2px solid var(--secondary-color);
 }
 
 .search-product-container header h1 {

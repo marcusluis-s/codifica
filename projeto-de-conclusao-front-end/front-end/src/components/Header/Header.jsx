@@ -3,8 +3,13 @@ import styles from "./Header.module.css";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
+import { useState } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoMdClose } from "react-icons/io";
 
 function Header({ user, handleSignOut }) {
+    const [menuOpen, setMenuOpen] = useState(false);
+
     if (!user) {
         return null;
     }
@@ -19,7 +24,10 @@ function Header({ user, handleSignOut }) {
                     {/* <img src={user.picture} alt="Imagem do perfil do usuário" /> */}
                 </div>
 
-                <div className={styles["header-user-actions"]}>
+                <div
+                    className={`${styles["header-user-actions"]} ${menuOpen ? styles["menu-open"] : ""
+                        }`}
+                >
                     <ThemeToggle />
                     <nav className={styles["header-navigation"]}>
                         <Link to="/home/products">Produtos</Link>
@@ -32,6 +40,13 @@ function Header({ user, handleSignOut }) {
                     </nav>
                     <button onClick={handleSignOut}>Sair</button>
                 </div>
+
+                <button
+                    className={styles["menu-toggle"]}
+                    onClick={() => setMenuOpen((prev) => !prev)}
+                >
+                    {menuOpen ? <IoMdClose size={28} /> : <GiHamburgerMenu size={28} />}
+                </button>
             </header>
 
             <Breadcrumbs />

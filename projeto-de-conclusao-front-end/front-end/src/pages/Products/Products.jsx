@@ -8,7 +8,7 @@ function Products() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true); // Controla se algo está sendo carregado
     const [page, setPage] = useState(1); // Página atual
-    const [hasMore, setHasMore] = useState(true); // Controla se há mais produtos para carrega
+    const [hasMore, setHasMore] = useState(true); // Controla se há mais produtos para carregar
 
     const [searchProduct, setSearchProduct] = useState("");
 

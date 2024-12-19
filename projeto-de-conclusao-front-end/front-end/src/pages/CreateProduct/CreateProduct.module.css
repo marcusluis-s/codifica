@@ -11,9 +11,9 @@
     margin-bottom: 10px;
 }
 
-.create-product-container input,
-.create-product-container textarea,
-.create-product-container button {
+.create-product-container form input,
+.create-product-container form textarea,
+.create-product-container form button {
     padding: 0.6rem;
     border: none;
     outline: none;
@@ -23,7 +23,7 @@
     width: 100%;
 }
 
-.create-product-container input[type="file"] {
+.create-product-container form input[type="file"] {
     padding: 0.6rem;
     border: 2px solid var(--secondary-color);
     margin-bottom: 20px;
@@ -31,6 +31,11 @@
 
 .create-product-container form textarea {
     resize: vertical;
+}
+
+.create-product-container form input:focus,
+.create-product-container form textarea:focus {
+    outline: 2px solid var(--secondary-color);
 }
 
 .create-product-container form button {
